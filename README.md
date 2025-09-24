@@ -10,7 +10,7 @@ Airport Flight Announcement System.
 
 ## 联系方式
 
-- **微信**：Daniel_Qinghan_
+- **微信**：Daniel_Qinghan
 - **手机**：+86-195-2887-3640; +82-010-5861-5296
 - **邮箱**：wuhanqing2005@gmail.com
 
