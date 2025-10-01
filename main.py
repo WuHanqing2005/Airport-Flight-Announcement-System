@@ -1,17 +1,19 @@
 ﻿# -*- coding:utf-8 -*-
-# 软件名称：Airport Flight Announcement System
-# 版本号：2025.09.08
-# 软件版权归属：吴瀚庆
-# 未经允许，禁止盗用，侵权必究
+# Software Name: Airport Flight Announcement System
+# Version: 2025.09.08
+# Copyright: Wu Hanqing
+# Unauthorized use is prohibited. Infringement will be prosecuted.
 
-# 有意请联系软件作者 吴瀚庆
-# 微信：Daniel_Qinghan
-# 手机：+86-195-2887-3640; +82-010-5861-5296
-# 邮箱：wuhanqing2005@gmail.com
-# 欢迎提出宝贵意见，感谢支持！
+# For cooperation, please contact the author Wu Hanqing
+# WeChat: Daniel_Qinghan
+# Phone: +86-195-2887-3640; +82-010-5861-5296
+# Email: wuhanqing2005@gmail.com
+# Your valuable suggestions are welcome. Thank you for your support!
 
-# 新版本的pydub，不再包含pyaudioop包，但是可能会出现兼容性错误，此时请执行以下语句
+# The new version of pydub no longer contains the pyaudioop package, but compatibility errors may occur.
+# In this case, please run:
 # python -m pip install pydub audioop-lts
+
 
 import os
 import datetime
@@ -27,10 +29,10 @@ import pygame
 import threading
 
 
-# 将一些必要的列表储存在这里，方便查找
+# Store some necessary lists here for easy lookup
 language_type = ['CN_EN', 'CN_EN_JA', 'CN_EN_KO']                       # 供用户选择的语言类型下拉列表
-announcement_type = ["Check_in", "Arrival", "Baggage_Claim", "Departure_Delay_Determined", "Departure_Delay_Undetermined", \
-                     "Arrival_Delay_Determined", "Arrival_Delay_Undetermined"]            # 供用户选择的广播种类下列表
+announcement_type = ["Check_in", "Arrival", "Baggage_Claim", "Departure_Delay_Determined", \
+                     "Departure_Delay_Undetermined", "Arrival_Delay_Determined", "Arrival_Delay_Undetermined"]            # 供用户选择的广播种类下列表
 
 
 # 写错误日志的函数
@@ -118,7 +120,13 @@ def write_xlsx(data, filename):
         messagebox.showerror("Error", f"write_xlsx failed: {error_message}")
         write_error_log(error_message)
 
-
+def save_info_function():
+    try:
+        write_xlsx(data, filename)
+        messagebox.showinfo("Information", "Flight information saved successfully!")
+    except Exception as error_message:
+        messagebox.showerror("Error", f"Save Info failed: {error_message}")
+        write_error_log(error_message)
 
 # 读取cityname_cn目录中的所有文件名
 file_names_1 = os.listdir(os.path.join('material', 'cityname_cn'))
@@ -1175,8 +1183,8 @@ if __name__ == '__main__':
         # 获取屏幕中心点的坐标
         screen_width = root.winfo_screenwidth()
         screen_height = root.winfo_screenheight()
-        window_width = 1400
-        window_height = 800
+        window_width = 1000
+        window_height = 600
         x = (screen_width // 2) - (window_width // 2)
         y = (screen_height // 2) - (window_height // 2)
 
@@ -1191,15 +1199,15 @@ if __name__ == '__main__':
             messagebox.showerror("Error", "Loading background picture failed!")
 
         text = "Welcome to Automatic Flight Check-in Announcement System\n\nClick 'Login' to start"
-        text_label = tk.Label(root, text=text, font=("Times New Roman", 25), bg='lightblue', fg='black')
+        text_label = tk.Label(root, text=text, font=("Times New Roman", 20), bg='lightblue', fg='black')
         text_label.place(relx=0.5, rely=0.4, anchor='center')
 
-        account_label = tk.Label(root, text="Account:", font=("Times New Roman", 18), bg='lightblue', fg='black')
+        account_label = tk.Label(root, text="Account:", font=("Times New Roman", 12), bg='lightblue', fg='black')
         account_label.place(relx=0.35, rely=0.5, anchor='center')
         account_entry = tk.Entry(root)
         account_entry.place(relx=0.5, rely=0.5, anchor='center')
 
-        password_label = tk.Label(root, text="Password:", font=("Times New Roman", 18), bg='lightblue', fg='black')
+        password_label = tk.Label(root, text="Password:", font=("Times New Roman", 12), bg='lightblue', fg='black')
         password_label.place(relx=0.35, rely=0.55, anchor='center')
         password_entry = tk.Entry(root, show="*")
         password_entry.place(relx=0.5, rely=0.55, anchor='center')
@@ -1236,9 +1244,9 @@ if __name__ == '__main__':
     try:
         # 创建主窗口
         root = tk.Tk()
-        # 设置窗口大小为1500x800像素
-        window_width = 1500
-        window_height = 800
+        # 设置窗口大小为1000x600像素
+        window_width = 1000
+        window_height = 600
         x = (screen_width // 2) - (window_width // 2)
         y = (screen_height // 2) - (window_height // 2)
         root.geometry(f"{window_width}x{window_height}+{x}+{y}")    # 设置窗口大小位置
@@ -1326,7 +1334,7 @@ if __name__ == '__main__':
         stop_button.pack(side=tk.LEFT, padx=5, pady=5)
 
         # 创建保存信息按钮，将data作为参数传递给write_xlsx函数
-        save_button = tk.Button(toolbar_2, text="Save Info", command=write_xlsx(data, filename))
+        save_button = tk.Button(toolbar_2, text="Save Info", command=save_info_function)
         save_button.pack(side=tk.RIGHT, padx=5, pady=5)
 
         # 创建刷新按钮，单击刷新按钮时调用refresh_table函数
@@ -1337,6 +1345,84 @@ if __name__ == '__main__':
         clear_button = tk.Button(toolbar_2, text="Clear", command=clear_function)
         clear_button.pack(side=tk.RIGHT, padx=5, pady=5)
 
+        # 1. 创建右键菜单
+        def show_context_menu(event):
+            # 获取鼠标位置对应的行
+            row_id = table.identify_row(event.y)
+            if not row_id:
+                return
+            table.selection_set(row_id)  # 选中该行
+
+            # 构建菜单
+            context_menu = tk.Menu(root, tearoff=0)
+            context_menu.add_command(label="播放广播", command=lambda: play_announcement_menu(row_id))
+            context_menu.add_command(label="删除", command=lambda: delete_row_menu(row_id))
+            context_menu.add_command(label="修改", command=lambda: edit_row_menu(row_id))
+            context_menu.post(event.x_root, event.y_root)
+
+        # 2. 绑定右键事件
+        table.bind("<Button-3>", show_context_menu)
+
+        # 3. 播放广播菜单功能
+        def play_announcement_menu(row_id):
+            row = table.item(row_id, "values")
+            flight_number = row[0]
+            # 弹出选择广播类型窗口
+            top = tk.Toplevel(root)
+            top.title("选择广播类型")
+            tk.Label(top, text="请选择广播类型:").pack(pady=10)
+            announcement_var = tk.StringVar(top)
+            announcement_box = ttk.Combobox(top, textvariable=announcement_var, values=announcement_type, state="readonly")
+            announcement_box.pack(pady=10)
+            def play_selected():
+                # 复用 search_data 的播放逻辑
+                search_data(top, tk.StringVar(value=flight_number), announcement_var, data)
+            tk.Button(top, text="播放", command=play_selected).pack(pady=10)
+
+        # 4. 删除菜单功能
+        def delete_row_menu(row_id):
+            row = table.item(row_id, "values")
+            flight_number = row[0]
+            # 删除data中的对应行
+            for i, r in enumerate(data):
+                if r[0] == flight_number:
+                    data.pop(i)
+                    break
+            update_table(data)
+            write_xlsx(data, filename)
+
+        # 5. 修改菜单功能
+        def edit_row_menu(row_id):
+            row = table.item(row_id, "values")
+            # 弹出编辑窗口，复用添加航班窗口逻辑
+            top = tk.Toplevel(root)
+            top.title("修改航班信息")
+            labels = ["Flight Number", "Departure", "Stopover", "Destination", "Divert", "Check-in Counter", "Boarding Gate", "Baggage Claim", "Scheduled Arrival Time (hh:mm)", "Estimated Arrival Time (hh:mm)", "Delay Reason", "Language Type"]
+            entries = []
+            for i, label in enumerate(labels):
+                tk.Label(top, text=label).grid(row=i, column=0)
+                if label in ['Departure', 'Stopover', 'Destination', "Divert"]:
+                    entry = ttk.Combobox(top, values=citynames)
+                elif label == 'Language Type':
+                    entry = ttk.Combobox(top, values=language_type)
+                elif label == 'Delay Reason':
+                    entry = ttk.Combobox(top, values=delay_reasons)
+                else:
+                    entry = tk.Entry(top)
+                entry.grid(row=i, column=1)
+                entry.insert(0, row[i])
+                entries.append(entry)
+            def submit_edit():
+                new_row = [e.get() for e in entries]
+                # 更新data
+                for i, r in enumerate(data):
+                    if r[0] == row[0]:
+                        data[i] = new_row
+                        break
+                update_table(data)
+                write_xlsx(data, filename)
+                top.destroy()
+            tk.Button(top, text="提交修改", command=submit_edit).grid(row=12, column=0, columnspan=2)
 
         # 运行主循环
         root.mainloop()
