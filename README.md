@@ -4,7 +4,7 @@ Airport Flight Announcement System.
 ## 基本信息
 
 - **软件名称**：航班广播语音系统
-- **版本号**：2024.11.11（Debug中，非正式版本）
+- **版本号**：2025.10.22
 - **版权归属**：吴瀚庆
 - **许可声明**：未经允许，禁止盗用，侵权必究
 
@@ -16,7 +16,7 @@ Airport Flight Announcement System.
 
 欢迎提出宝贵意见，感谢支持！
 
-> **备注**：如何将程序连同所需要的第三方库一同打包的问题仍未解决……
+> **备注**：无
 
 ## 更新日志
 
@@ -224,7 +224,7 @@ May I have your attention please. Arriving passengers on Shanghai Airlines. Flig
 ## 获取语音片段
 
 如需获取新的语音片段，请联系软件作者：
-- **微信**：whq20050121
+- **微信**：Daniel_Qinghan
 - 我们将为您合成新的语音片段并指导如何添加到指定文件夹
 
 ---
