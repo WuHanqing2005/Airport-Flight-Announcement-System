@@ -1,0 +1,6 @@
+[2025-10-22 13:40:27]
+ERROR: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+
+[2025-10-22 13:40:30]
+ERROR: 'NoneType' object is not iterable
+
