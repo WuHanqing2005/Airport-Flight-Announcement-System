@@ -1,0 +1,25 @@
+[project]
+name = "airport-flight-announcement-system"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "WU HANQING",email = "wuhanqing2005@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "flask (>=3.1.2,<4.0.0)",
+    "flask-socketio (>=5.5.1,<6.0.0)",
+    "eventlet (>=0.40.3,<0.41.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pydub (>=0.25.1,<0.26.0)",
+    "audioop-lts (>=0.2.2,<0.3.0)",
+]
+
+[tool.poetry]
+packages = [{include = "airport_flight_announcement_system", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
