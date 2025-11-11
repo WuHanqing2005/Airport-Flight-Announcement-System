@@ -61,10 +61,9 @@ import webbrowser
 import threading
 from pathlib import Path  # New: robust absolute path computation without changing any existing logic
 
-# Compute the project root directory in a robust way
-# main.py is located at src/airport_flight_announcement_system/main.py
-# Path(__file__).resolve().parents[2] => project root directory
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# Compute the application root directory in a robust way
+# This is the directory where main.py resides. All other resource folders are relative to this.
+APP_ROOT = Path(__file__).resolve().parent
 
 # --- Third-Party Library Imports ---
 from flask import Flask, render_template, request, jsonify, send_from_directory
@@ -74,11 +73,11 @@ from pydub import AudioSegment
 
 
 # --- Flask App Initialization ---
-# Configure Flask to explicitly use template and static folders located at the project root
+# Configure Flask to explicitly use template and static folders located alongside main.py
 app = Flask(
     __name__,
-    template_folder=str(PROJECT_ROOT / 'templates'),
-    static_folder=str(PROJECT_ROOT / 'static')
+    template_folder=str(APP_ROOT / 'templates'),
+    static_folder=str(APP_ROOT / 'static')
 )
 # The 'static' folder is automatically served by Flask at /static
 socketio = SocketIO(app, async_mode='eventlet')
@@ -181,11 +180,11 @@ class AirportAnnouncementSystem:
             >>> len(system.data)
             0  # or number of rows loaded from data.xlsx
         """
-        # Define core directories for data and output files
+        # Define core directories for data and output files, relative to the app's location
         # Convert Path objects to absolute path strings (do not change usage of os.* APIs)
-        self.data_dir = str(PROJECT_ROOT / 'data')
-        self.output_dir = str(PROJECT_ROOT / 'output')
-        self.material_dir = str(PROJECT_ROOT / 'material')
+        self.data_dir = str(APP_ROOT / 'data')
+        self.output_dir = str(APP_ROOT / 'output')
+        self.material_dir = str(APP_ROOT / 'material')
         self.filename = os.path.join(self.data_dir, 'data.xlsx')
 
         # Ensure necessary directories exist on startup
@@ -243,8 +242,8 @@ class AirportAnnouncementSystem:
             >>> logger = self._configure_logging()
             >>> logger.info("Logger ready")
         """
-        # Write logs to the project root directory to avoid coupling to the run directory
-        log_dir = str(PROJECT_ROOT)  # Log file at project root directory
+        # Write logs to the app's root directory to avoid coupling to the run directory
+        log_dir = str(APP_ROOT)  # Log file at app root directory
         os.makedirs(log_dir, exist_ok=True)
         log_path = os.path.join(log_dir, 'application.log')
 
@@ -1551,7 +1550,7 @@ def clear_info():
     - JSON: {'success': bool, 'message': str}
 
     curl Example:
-        curl -X POST http://127.0.0.1:5000/api/actions/clear
+        curl -X POST http://12-7.0.0.1:5000/api/actions/clear
     """
     return jsonify(system.clear_function())
 
