@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: FINAL, PURE, NO-TRICKS VERSION
+:: FINAL, PURE, NO-TRICKS VERSION (Python 3.13.0)
 :: This script contains only the core, stable logic.
 :: IT MUST BE RUN FROM A CMD.EXE PROMPT, NOT POWERSHELL.
 :: ============================================================================
@@ -23,10 +23,10 @@ echo [Step 1/4] Checking for Python installation...
 where /q python >nul 2>nul
 if %errorlevel% neq 0 (
     echo [WARNING] Python not found.
-    set /p "install_python=Install Python 3.11 automatically? (y/n): "
+    set /p "install_python=Install Python 3.13.0 automatically? (y/n): "
     if /i "!install_python!"=="y" (
-        echo Downloading Python installer...
-        powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe', 'python_installer.exe')"
+        echo Downloading Python 3.13.0 installer...
+        powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe', 'python_installer.exe')"
         if not exist "python_installer.exe" ( echo [ERROR] Download failed. & goto EndScript )
         echo Starting Python silent installation...
         start /wait "python_installer.exe" /quiet InstallAllUsers=1 PrependPath=1
