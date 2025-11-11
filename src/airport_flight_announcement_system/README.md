@@ -20,7 +20,7 @@ Airport Flight Announcement System — an offline GUI tool that composes and pla
 | Item | English | 中文 |
 | ---- | ------- | ---- |
 | Software Name | Airport Flight Announcement System | 航班广播语音系统 |
-| Version | 2025.10.22 | 2025.10.22 |
+| Version | 2025.11.11 | 2025.11.11 |
 | Copyright Holder | Wu Hanqing | 吴瀚庆 |
 | License Statement | Unauthorized use prohibited; infringement will be prosecuted | 未经允许禁止盗用，侵权必究 |
 
