@@ -4,3 +4,9 @@
 2025-11-11 20:04:31 [INFO] (read_xlsx:469) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\data\data.xlsx'.
 2025-11-11 20:04:31 [INFO] (__init__:247) - Application initialized successfully.
 2025-11-11 20:04:33 [INFO] (index:1435) - Main page requested by a client.
+2025-11-11 20:46:30 [INFO] (__init__:197) - =====================================================
+2025-11-11 20:46:30 [INFO] (__init__:198) - Application initializing...
+2025-11-11 20:46:30 [INFO] (_load_material_lists:317) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-11 20:46:30 [INFO] (read_xlsx:446) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\data\data.xlsx'.
+2025-11-11 20:46:30 [INFO] (__init__:224) - Application initialized successfully.
+2025-11-11 20:46:32 [INFO] (index:1412) - Main page requested by a client.
