@@ -15,29 +15,6 @@
 #   python -m pip install pydub audioop-lts
 
 
-# Dependency Export Command:
-# 
-# 1. To export dependencies document "requirements.txt" 
-#    without hashes for easier installation in constrained environments, run:
-# `poetry export -f requirements.txt --output requirements.txt --without-hashes`
-#
-# 2. Create In-Project Virtual Environment, run:
-# `python -m venv .venv`
-#
-# 3. Activate Virtual Environment, run:
-# `.\.venv\Scripts\python.exe -m pip install --upgrade pip`
-#
-# 4. Install PyInstaller to the virtual environment for packaging, run:
-# `.\.venv\Scripts\python.exe -m pip install pyinstaller`
-#
-# 5. Install Project Dependencies, run:
-# `.\.venv\Scripts\python.exe -m pip install -r requirements.txt`
-#
-# 6. (Optional) Run the Application to test, use:
-# `.\.venv\Scripts\python.exe -m src.airport_flight_announcement_system.main`
-#
-# 7. Package the Application into a Single Executable .exe file, run:
-# `.\.venv\Scripts\pyinstaller.exe --name airport_announcer --onefile --windowed --paths src  --hidden-import eventlet.hubs.epolls --hidden-import eventlet.hubs.kqueue --hidden-import eventlet.hubs.selects --hidden-import jinja2 --hidden-import markupsafe --hidden-import babel --add-data "material;material" --add-data "data;data" --add-data "templates;templates" --add-data "static;static" src\airport_flight_announcement_system\main.py`
 
 
 """
