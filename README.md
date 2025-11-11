@@ -63,39 +63,22 @@ Welcome to reach out for cooperation, feature requests, and voice pack customiza
 ## Table of Contents
 ## 目录
 
-1. Features  
-2. System Requirements  
-3. Installation  
-4. Quick Start  
-5. Data Model and Fields  
-6. GUI Overview and Operations  
-7. Broadcast Types and Examples  
-8. File and Folder Structure  
-9. Voice Pack Rules and Updates  
-10. Best Practices and Notes  
-11. Troubleshooting and FAQ  
-12. Backup and Data Safety  
-13. Roadmap  
-14. Contributing  
-15. License and Disclaimer  
-16. Changelog (reserved at the end)
-
-1. 功能特性  
-2. 系统要求  
-3. 安装部署  
-4. 快速上手  
-5. 数据模型与字段说明  
-6. 界面总览与操作指南  
-7. 广播类型与文本示例  
-8. 目录与文件结构  
-9. 语音包规范与更新  
-10. 使用建议与注意事项  
-11. 故障排查与常见问题  
-12. 备份与数据安全  
-13. 开发路线图  
-14. 贡献方式  
-15. 许可与声明  
-16. 更新日志（文末预留）
+1. Features / 功能特性
+2. System Requirements / 系统要求
+3. Installation / 安装部署
+4. Quick Start / 快速上手
+5. Data Model and Fields / 数据模型与字段说明
+6. GUI Overview and Operations / 界面总览与操作指南
+7. Broadcast Types and Examples / 广播类型与文本示例
+8. File and Folder Structure / 目录与文件结构
+9. Voice Pack Rules and Updates / 语音包规范与更新
+10. Best Practices and Notes / 使用建议与注意事项
+11. Troubleshooting and FAQ / 故障排查与常见问题
+12. Backup and Data Safety / 备份与数据安全
+13. Roadmap / 开发路线图
+14. Contributing / 贡献方式
+15. License and Disclaimer / 许可与声明
+16. Changelog / 更新日志
 
 ---
 
