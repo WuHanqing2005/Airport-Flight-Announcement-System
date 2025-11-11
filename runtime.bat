@@ -2,13 +2,12 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: Airport Flight Announcement System - Automated Deployment Script (v3)
+:: Airport Flight Announcement System - Automated Deployment Script (v4 - Final)
 ::
 :: Change Log:
-:: - Added Tsinghua University PyPI mirror to 'pip install' to prevent network timeouts.
-:: - Increased pip command timeout to 100 seconds.
-:: - Changed 'poetry' commands to 'python -m poetry' to avoid PATH issues after installation.
-:: - Improved error handling logic for the installation step.
+:: - Corrected the 'poetry install' step. It now properly configures a mirror
+::   source for Poetry before installing, instead of using the invalid '-i' flag.
+:: - This is the correct and official way to handle custom repositories in Poetry.
 :: ============================================================================
 
 cd /d "%~dp0"
@@ -24,16 +23,8 @@ echo.
 :: STEP 1: Check for Python installation
 :: --------------------------------------------------------------------------
 echo [Step 1/4] Checking for Python installation...
-set "PYTHON_FOUND=0"
-for %%G in ("%path:;=" "%") do (
-    if exist "%%~G\python.exe" (
-        set "PYTHON_FOUND=1"
-        goto :python_check_done
-    )
-)
-:python_check_done
-
-if "%PYTHON_FOUND%"=="0" (
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
     echo [ERROR] Python is not installed or not added to the system PATH.
     echo.
     echo Please manually download and install Python from the official website:
@@ -65,10 +56,25 @@ if %errorlevel% neq 0 (
 echo.
 
 :: --------------------------------------------------------------------------
-:: STEP 3: Install dependencies using Poetry
+:: STEP 3: Configure mirror and install dependencies
 :: --------------------------------------------------------------------------
-echo [Step 3/4] Installing project dependencies...
-python -m poetry install --no-root -i https://pypi.tuna.tsinghua.edu.cn/simple
+echo [Step 3/4] Configuring mirror and installing project dependencies...
+
+:: Check if the tsinghua source already exists to avoid errors
+python -m poetry source show | findstr "tsinghua" >nul
+if %errorlevel% neq 0 (
+    echo [INFO] Adding Tsinghua University mirror as a source for Poetry...
+    python -m poetry source add --priority=default tsinghua https://pypi.tuna.tsinghua.edu.cn/simple
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to add Poetry source.
+        goto EndScript
+    )
+) else (
+    echo [INFO] Poetry source 'tsinghua' already configured.
+)
+
+:: Now install dependencies
+python -m poetry install --no-root
 if %errorlevel% neq 0 (
     echo [ERROR] 'poetry install' failed. Please check the 'pyproject.toml' file and network connection.
     goto EndScript
