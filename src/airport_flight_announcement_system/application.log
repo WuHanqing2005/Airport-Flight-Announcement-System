@@ -1,6 +1,0 @@
-2025-11-11 13:08:14 [INFO] (__init__:72) - =====================================================
-2025-11-11 13:08:14 [INFO] (__init__:73) - Application initializing...
-2025-11-11 13:08:14 [INFO] (_load_material_lists:157) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
-2025-11-11 13:08:14 [INFO] (read_xlsx:224) - Successfully loaded 7 flight rows from 'data\data.xlsx'.
-2025-11-11 13:08:14 [INFO] (__init__:99) - Application initialized successfully.
-2025-11-11 13:08:16 [INFO] (index:828) - Main page requested by a client.
