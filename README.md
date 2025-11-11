@@ -286,7 +286,7 @@ Airport-Flight-Announcement-System/
 
 ---
 
-## 16. Changelog / 更新日志
+## 16. Update Log / 更新日志
 
 ### 2024.04.02
 `Project initiated; switched from Google TTS to WAV stitching; first tkinter GUI`
