@@ -1,138 +1,127 @@
 @echo off
 setlocal enabledelayedexpansion
 
-:: 1. Set the working directory to the script's location
-:: 将当前目录切换到bat文件所在的目录
+:: If this script was launched from PowerShell, PS sets PSModulePath.
+:: Detect that and relaunch in a real cmd.exe window to avoid PowerShell-specific behaviors.
+if defined PSModulePath (
+    echo Detected PowerShell. Relaunching script in a new cmd window for compatibility...
+    start "" cmd /k "%~f0"
+    exit /b
+)
+
+:: ====================================================================
+:: Airport Flight Announcement System - Automated Deployment (CMD mode)
+:: ====================================================================
 cd /d "%~dp0"
+
 echo =================================================================
-echo  Airport Flight Announcement System Runtime Environment Setup
+echo  Airport Flight Announcement System - Automated Deployment
 echo =================================================================
 echo.
 echo Current project directory: %cd%
 echo.
 
-:: 2. Check for Python installation
-:: 检查Python是否安装并已添加到PATH
+:: -------------------------
+:: STEP 1: Check for Python (registry-based)
+:: -------------------------
 echo [Step 1/4] Checking for Python installation...
-python --version >nul 2>&1
-if %errorlevel% neq 0 (
-    echo [WARNING] Python is not found on your system.
+set "PYTHON_FOUND=0"
+
+:: Check Current User installations
+reg query "HKCU\Software\Python\PythonCore" >nul 2>nul
+if %errorlevel% equ 0 set "PYTHON_FOUND=1"
+
+:: Check Local Machine installations (32/64-bit)
+if %PYTHON_FOUND% equ 0 (
+    reg query "HKLM\Software\Python\PythonCore" >nul 2>nul
+    if %errorlevel% equ 0 set "PYTHON_FOUND=1"
+)
+if %PYTHON_FOUND% equ 0 (
+    reg query "HKLM\Software\WOW6432Node\Python\PythonCore" >nul 2>nul
+    if %errorlevel% equ 0 set "PYTHON_FOUND=1"
+)
+
+if "%PYTHON_FOUND%"=="0" (
+    echo [WARNING] No installed Python found via registry.
     echo.
-    set /p "install_python=Do you want to automatically download and install Python now? (y/n): "
+    set /p "install_python=Automatically download and install Python 3.11 now? (y/n): "
     if /i "!install_python!"=="y" (
-        echo.
-        echo Downloading Python installer... Please wait.
-        :: 使用PowerShell下载Python安装包 (以Python 3.11.8为例，这是一个稳定版本)
+        echo Downloading Python installer...
         set "PYTHON_INSTALLER=python_installer.exe"
         set "PYTHON_URL=https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
         powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('%PYTHON_URL%', '%PYTHON_INSTALLER%')"
-        
-        if not exist %PYTHON_INSTALLER% (
-            echo [ERROR] Failed to download Python installer. Please check your internet connection.
-            pause
-            exit /b 1
+        if not exist "%PYTHON_INSTALLER%" (
+            echo [ERROR] Download failed. Check internet/firewall.
+            goto EndScript
         )
-        
-        echo.
-        echo Download complete. Starting Python installation...
-        echo This will be a quiet installation. Please approve any User Account Control (UAC) prompts.
-        
-        :: /quiet: 静默安装
-        :: PrependPath=1: 将Python添加到系统PATH (非常重要！)
-        :: InstallAllUsers=1: 为所有用户安装 (推荐)
-        start /wait %PYTHON_INSTALLER% /quiet InstallAllUsers=1 PrependPath=1
-        
-        del %PYTHON_INSTALLER%
-        
-        echo.
-        echo Python installation should be complete.
-        echo IMPORTANT: A terminal restart is needed to refresh the environment variables.
-        echo Please close this window and run the script again.
-        echo.
-        pause
-        exit /b 0
-
+        echo Starting Python silent installation (may require UAC)...
+        start /wait "%PYTHON_INSTALLER%" /quiet InstallAllUsers=1 PrependPath=1
+        del "%PYTHON_INSTALLER%"
+        echo [INFO] Python install attempted. Close this window and run the script again after installation completes.
+        goto EndScript
     ) else (
-        echo.
-        echo Please visit https://www.python.org/downloads/ to download and install Python manually.
-        echo IMPORTANT: During installation, please make sure to check the box that says "Add Python to PATH".
-        echo.
-        pause
-        exit /b 1
+        echo [ABORTED] Please install Python manually and add to PATH.
+        goto EndScript
     )
+) else (
+    echo Python installation detected.
 )
-for /f "tokens=2" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
-echo Python %PYTHON_VERSION% found.
 echo.
 
-
-:: 3. Check for Poetry installation
-:: 检查Poetry是否安装
+:: -------------------------
+:: STEP 2: Check for Poetry
+:: -------------------------
 echo [Step 2/4] Checking for Poetry installation...
-poetry --version >nul 2>&1
+where /q poetry >nul 2>nul
 if %errorlevel% neq 0 (
-    echo [WARNING] Poetry is not found. Poetry is required to manage project dependencies.
+    echo [WARNING] Poetry not found.
     echo.
-    set /p "install_poetry=Do you want to install Poetry automatically now? (y/n): "
+    set /p "install_poetry=Install Poetry automatically now? (y/n): "
     if /i "!install_poetry!"=="y" (
-        echo.
-        echo Installing Poetry using the recommended installer...
-        echo This may take a few moments.
         powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('https://install.python-poetry.org', 'install-poetry.py')"
-        python install-poetry.py
-        del install-poetry.py
-        echo.
-        echo IMPORTANT:
-        echo Poetry has been installed. You may need to restart your terminal or computer
-        echo for the PATH environment variable to be updated.
-        echo The script will now add Poetry to the PATH for this session and continue.
-        echo.
-        set "PATH=%APPDATA%\pypoetry\venv\Scripts;%PATH%"
-        
-        :: Verify again after attempting to add to PATH
-        poetry --version >nul 2>&1
-        if %errorlevel% neq 0 (
-            echo [ERROR] Poetry installation seems to have failed or PATH is not correctly set.
-            echo Please restart your terminal/computer and run this script again.
-            pause
-            exit /b 1
+        if not exist "install-poetry.py" (
+            echo [ERROR] Failed to download Poetry installer.
+            goto EndScript
         )
-        echo Poetry installed and configured for this session successfully.
+        python install-poetry.py
+        del "install-poetry.py"
+        set "PATH=%APPDATA%\pypoetry\venv\Scripts;%PATH%"
+        where /q poetry >nul 2>nul
+        if %errorlevel% neq 0 (
+            echo [ERROR] Poetry installation failed or PATH not updated. Please restart terminal and try again.
+            goto EndScript
+        )
+        echo Poetry installed for this session.
     ) else (
-        echo Please install Poetry manually by following the instructions at https://python-poetry.org/docs/#installation
-        pause
-        exit /b 1
+        echo [ABORTED] Please install Poetry manually.
+        goto EndScript
     )
 ) else (
     echo Poetry is already installed.
 )
 echo.
 
-:: 4. Install dependencies using Poetry
-:: 使用Poetry安装项目依赖
+:: -------------------------
+:: STEP 3: Install dependencies
+:: -------------------------
 echo [Step 3/4] Installing project dependencies with Poetry...
-echo This might take a while if this is the first time running the script.
 poetry install --no-root
 if %errorlevel% neq 0 (
-    echo [ERROR] Failed to install project dependencies using 'poetry install'.
-    echo Please check the error messages above. You might need to resolve them manually.
-    echo.
-    pause
-    exit /b 1
+    echo [ERROR] 'poetry install' failed. See above for details.
+    goto EndScript
 )
-echo Dependencies are up to date.
+echo Dependencies installed/updated.
 echo.
 
-:: 5. Run the application
-:: 运行主程序
+:: -------------------------
+:: STEP 4: Run main application
+:: -------------------------
 echo [Step 4/4] Starting the Airport Flight Announcement System...
-echo =================================================================
-echo.
 poetry run python -m airport_flight_announcement_system.main
 
+:EndScript
 echo.
 echo =================================================================
-echo The program has exited.
+echo  Script finished. Press any key to exit.
 echo =================================================================
-pause
-endlocal
+pause >nul
