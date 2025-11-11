@@ -203,3 +203,26 @@
 2025-11-11 14:11:32 [INFO] (read_xlsx:241) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\data\data.xlsx'.
 2025-11-11 14:11:32 [INFO] (__init__:115) - Application initialized successfully.
 2025-11-11 14:11:34 [INFO] (index:846) - Main page requested by a client.
+2025-11-11 14:17:18 [INFO] (__init__:194) - =====================================================
+2025-11-11 14:17:18 [INFO] (__init__:195) - Application initializing...
+2025-11-11 14:17:18 [INFO] (_load_material_lists:314) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-11 14:17:19 [INFO] (read_xlsx:443) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\data\data.xlsx'.
+2025-11-11 14:17:19 [INFO] (__init__:221) - Application initialized successfully.
+2025-11-11 14:17:21 [INFO] (index:1409) - Main page requested by a client.
+2025-11-11 14:18:11 [INFO] (index:1409) - Main page requested by a client.
+2025-11-11 14:18:18 [INFO] (search_and_synthesize:887) - Synthesis started. Flight: 'CA630', Type: 'Check_in'.
+2025-11-11 14:18:21 [INFO] (search_and_synthesize:961) - Announcement successfully exported to: D:\Working Files\Github Projects\Airport-Flight-Announcement-System\output\CA630_Check_in_20251111141821.wav
+2025-11-11 14:18:23 [INFO] (stop_all_audio:849) - STOP ALL requested by user.
+2025-11-11 14:18:23 [INFO] (stop_all_audio:852) - Stop event is now active. Active processes will terminate shortly.
+2025-11-11 14:18:23 [INFO] (stop_all_audio:849) - STOP ALL requested by user.
+2025-11-11 14:18:23 [DEBUG] (stop_all_audio:855) - Stop event was already active; ignoring duplicate request.
+2025-11-11 14:18:25 [INFO] (clear_output_cache:745) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-11 14:18:25 [ERROR] (clear_output_cache:757) - Failed to delete D:\Working Files\Github Projects\Airport-Flight-Announcement-System\output\CA630_Check_in_20251111141821.wav. Reason: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\Working Files\\Github Projects\\Airport-Flight-Announcement-System\\output\\CA630_Check_in_20251111141821.wav'
+2025-11-11 14:18:25 [DEBUG] (clear_output_cache:754) - Deleted cache file: MU2546_Check_in_20251111140655.wav
+2025-11-11 14:18:31 [INFO] (stop_all_audio:849) - STOP ALL requested by user.
+2025-11-11 14:18:31 [DEBUG] (stop_all_audio:855) - Stop event was already active; ignoring duplicate request.
+2025-11-11 14:18:31 [INFO] (stop_all_audio:849) - STOP ALL requested by user.
+2025-11-11 14:18:31 [DEBUG] (stop_all_audio:855) - Stop event was already active; ignoring duplicate request.
+2025-11-11 14:18:34 [INFO] (clear_output_cache:745) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-11 14:18:34 [DEBUG] (clear_output_cache:754) - Deleted cache file: CA630_Check_in_20251111141821.wav
+2025-11-11 14:18:34 [INFO] (clear_output_cache:764) - Successfully cleared cache. 1 files deleted.
