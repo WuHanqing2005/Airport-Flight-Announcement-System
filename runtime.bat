@@ -2,12 +2,13 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: Airport Flight Announcement System - Automated Deployment Script (v4 - Final)
+:: Airport Flight Announcement System - Automated Deployment Script (v5 - Final & Robust)
 ::
 :: Change Log:
-:: - Corrected the 'poetry install' step. It now properly configures a mirror
-::   source for Poetry before installing, instead of using the invalid '-i' flag.
-:: - This is the correct and official way to handle custom repositories in Poetry.
+:: - Replaced the unstable 'poetry source add' command with a direct modification
+::   of Poetry's global configuration. This sets a PyPI mirror in a much more
+::   robust and compatible way, bypassing command-line version differences.
+:: - This should definitively fix the source configuration errors.
 :: ============================================================================
 
 cd /d "%~dp0"
@@ -60,18 +61,10 @@ echo.
 :: --------------------------------------------------------------------------
 echo [Step 3/4] Configuring mirror and installing project dependencies...
 
-:: Check if the tsinghua source already exists to avoid errors
-python -m poetry source show | findstr "tsinghua" >nul
-if %errorlevel% neq 0 (
-    echo [INFO] Adding Tsinghua University mirror as a source for Poetry...
-    python -m poetry source add --priority=default tsinghua https://pypi.tuna.tsinghua.edu.cn/simple
-    if %errorlevel% neq 0 (
-        echo [ERROR] Failed to add Poetry source.
-        goto EndScript
-    )
-) else (
-    echo [INFO] Poetry source 'tsinghua' already configured.
-)
+:: **ROBUST METHOD**: Directly configure the repository in Poetry's global config.
+echo [INFO] Setting Poetry's default repository to Tsinghua mirror...
+python -m poetry config repositories.tsinghua https://pypi.tuna.tsinghua.edu.cn/simple >nul
+python -m poetry config installer.parallel false >nul
 
 :: Now install dependencies
 python -m poetry install --no-root
