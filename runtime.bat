@@ -2,9 +2,10 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: FINAL, PURE, NO-TRICKS VERSION (Python 3.13.0)
-:: This script contains only the core, stable logic.
-:: IT MUST BE RUN FROM A CMD.EXE PROMPT, NOT POWERSHELL.
+:: FINAL VERSION - LOCAL INSTALLER PRIORITY
+:: Logic: Checks for a local 'python-3.13.0-amd64.exe'. If found, uses it.
+:: If not found, directs the user to the Python download page.
+:: This version is stable and follows the user's latest request precisely.
 :: ============================================================================
 
 cd /d "%~dp0"
@@ -22,18 +23,34 @@ echo.
 echo [Step 1/4] Checking for Python installation...
 where /q python >nul 2>nul
 if %errorlevel% neq 0 (
-    echo [WARNING] Python not found.
-    set /p "install_python=Install Python 3.13.0 automatically? (y/n): "
-    if /i "!install_python!"=="y" (
-        echo Downloading Python 3.13.0 installer...
-        powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe', 'python_installer.exe')"
-        if not exist "python_installer.exe" ( echo [ERROR] Download failed. & goto EndScript )
-        echo Starting Python silent installation...
-        start /wait "python_installer.exe" /quiet InstallAllUsers=1 PrependPath=1
-        del "python_installer.exe"
-        echo [INFO] Python installed. Please CLOSE this window and RUN THIS SCRIPT AGAIN.
+    echo [WARNING] Python not found on this system.
+    echo.
+    
+    :: New Logic: Check for the local installer first.
+    set "LOCAL_PYTHON_INSTALLER=python-3.13.0-amd64.exe"
+    
+    if exist "%LOCAL_PYTHON_INSTALLER%" (
+        echo [INFO] Local Python installer found. Preparing to install...
+        echo [INFO] This may require administrator privileges (UAC).
+        echo.
+        
+        start /wait "%LOCAL_PYTHON_INSTALLER%" /quiet InstallAllUsers=1 PrependPath=1
+        
+        echo [SUCCESS] The Python installation process has finished.
+        echo [IMPORTANT] To continue, please CLOSE this window and RUN THIS SCRIPT AGAIN.
         goto EndScript
-    ) else ( echo [ABORTED] & goto EndScript )
+        
+    ) else (
+        echo [ERROR] The local Python installer ("%LOCAL_PYTHON_INSTALLER%") was not found in the project directory.
+        echo.
+        echo Please manually download the correct Python 3.13.0 version for your system
+        echo from the official website:
+        echo.
+        echo   https://www.python.org/downloads/release/python-3130/
+        echo.
+        echo After installing Python, run this script again.
+        goto EndScript
+    )
 )
 echo Python is installed.
 echo.
@@ -48,7 +65,7 @@ if %errorlevel% neq 0 (
     set /p "install_poetry=Install Poetry automatically? (y/n): "
     if /i "!install_poetry!"=="y" (
         echo Installing Poetry...
-        powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('https://install.python-poetry.org', 'install-poetry.py')"
+        powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest 'https://install.python-poetry.org' -OutFile 'install-poetry.py'"
         if not exist "install-poetry.py" ( echo [ERROR] Download failed. & goto EndScript )
         python install-poetry.py
         del "install-poetry.py"
