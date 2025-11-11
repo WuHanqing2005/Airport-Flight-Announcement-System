@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal enabledelayedexpansion
 
 :: 1. Set the working directory to the script's location
 :: 将当前目录切换到bat文件所在的目录
@@ -16,15 +16,50 @@ echo.
 echo [Step 1/4] Checking for Python installation...
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [ERROR] Python is not found on your system or not added to PATH.
+    echo [WARNING] Python is not found on your system.
     echo.
-    echo Please visit https://www.python.org/downloads/ to download and install Python.
-    echo IMPORTANT: During installation, please make sure to check the box that says "Add Python to PATH".
-    echo.
-    echo After installation, please restart this script.
-    echo.
-    pause
-    exit /b 1
+    set /p "install_python=Do you want to automatically download and install Python now? (y/n): "
+    if /i "!install_python!"=="y" (
+        echo.
+        echo Downloading Python installer... Please wait.
+        :: 使用PowerShell下载Python安装包 (以Python 3.11.8为例，这是一个稳定版本)
+        set "PYTHON_INSTALLER=python_installer.exe"
+        set "PYTHON_URL=https://www.python.org/ftp/python/3.11.8/python-3.11.8-amd64.exe"
+        powershell -NoProfile -ExecutionPolicy Bypass -Command "(New-Object System.Net.WebClient).DownloadFile('%PYTHON_URL%', '%PYTHON_INSTALLER%')"
+        
+        if not exist %PYTHON_INSTALLER% (
+            echo [ERROR] Failed to download Python installer. Please check your internet connection.
+            pause
+            exit /b 1
+        )
+        
+        echo.
+        echo Download complete. Starting Python installation...
+        echo This will be a quiet installation. Please approve any User Account Control (UAC) prompts.
+        
+        :: /quiet: 静默安装
+        :: PrependPath=1: 将Python添加到系统PATH (非常重要！)
+        :: InstallAllUsers=1: 为所有用户安装 (推荐)
+        start /wait %PYTHON_INSTALLER% /quiet InstallAllUsers=1 PrependPath=1
+        
+        del %PYTHON_INSTALLER%
+        
+        echo.
+        echo Python installation should be complete.
+        echo IMPORTANT: A terminal restart is needed to refresh the environment variables.
+        echo Please close this window and run the script again.
+        echo.
+        pause
+        exit /b 0
+
+    ) else (
+        echo.
+        echo Please visit https://www.python.org/downloads/ to download and install Python manually.
+        echo IMPORTANT: During installation, please make sure to check the box that says "Add Python to PATH".
+        echo.
+        pause
+        exit /b 1
+    )
 )
 for /f "tokens=2" %%i in ('python --version 2^>^&1') do set PYTHON_VERSION=%%i
 echo Python %PYTHON_VERSION% found.
@@ -39,7 +74,7 @@ if %errorlevel% neq 0 (
     echo [WARNING] Poetry is not found. Poetry is required to manage project dependencies.
     echo.
     set /p "install_poetry=Do you want to install Poetry automatically now? (y/n): "
-    if /i "%install_poetry%"=="y" (
+    if /i "!install_poetry!"=="y" (
         echo.
         echo Installing Poetry using the recommended installer...
         echo This may take a few moments.
@@ -77,7 +112,7 @@ echo.
 :: 使用Poetry安装项目依赖
 echo [Step 3/4] Installing project dependencies with Poetry...
 echo This might take a while if this is the first time running the script.
-poetry install
+poetry install --no-root
 if %errorlevel% neq 0 (
     echo [ERROR] Failed to install project dependencies using 'poetry install'.
     echo Please check the error messages above. You might need to resolve them manually.
