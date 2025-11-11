@@ -2,13 +2,13 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: Airport Flight Announcement System - Automated Deployment Script
+:: Airport Flight Announcement System - Automated Deployment Script (v3)
 ::
 :: Change Log:
-:: - Python installation is now manual. If not found, the user is given a URL
-::   to download it, making the process more robust.
-:: - Poetry installation now uses 'pip install poetry', which is simpler and
-::   less prone to errors than downloading an installer script.
+:: - Added Tsinghua University PyPI mirror to 'pip install' to prevent network timeouts.
+:: - Increased pip command timeout to 100 seconds.
+:: - Changed 'poetry' commands to 'python -m poetry' to avoid PATH issues after installation.
+:: - Improved error handling logic for the installation step.
 :: ============================================================================
 
 cd /d "%~dp0"
@@ -50,23 +50,15 @@ echo.
 :: STEP 2: Check for Poetry installation
 :: --------------------------------------------------------------------------
 echo [Step 2/4] Checking for Poetry installation...
-set "POETRY_FOUND=0"
-for %%G in ("%path:;=" "%") do (
-    if exist "%%~G\poetry.exe" (
-        set "POETRY_FOUND=1"
-        goto :poetry_check_done_loop_end
-    )
-)
-:poetry_check_done_loop_end
-
-if "%POETRY_FOUND%"=="0" (
-    echo [INFO] Poetry not found. Attempting to install it using pip...
-    pip install poetry
+python -m poetry --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [INFO] Poetry not found. Attempting to install it using pip from a mirror...
+    python -m pip install poetry --default-timeout=100 -i https://pypi.tuna.tsinghua.edu.cn/simple
     if %errorlevel% neq 0 (
-        echo [ERROR] Failed to install Poetry using 'pip'. Please check your Python/pip installation.
+        echo [ERROR] Failed to install Poetry. Please check your network connection or try running 'pip install poetry' manually.
         goto EndScript
     )
-    echo [SUCCESS] Poetry has been installed.
+    echo [SUCCESS] Poetry has been installed successfully.
 ) else (
     echo Poetry is already installed.
 )
@@ -76,7 +68,7 @@ echo.
 :: STEP 3: Install dependencies using Poetry
 :: --------------------------------------------------------------------------
 echo [Step 3/4] Installing project dependencies...
-poetry install --no-root
+python -m poetry install --no-root -i https://pypi.tuna.tsinghua.edu.cn/simple
 if %errorlevel% neq 0 (
     echo [ERROR] 'poetry install' failed. Please check the 'pyproject.toml' file and network connection.
     goto EndScript
@@ -89,7 +81,7 @@ echo.
 :: --------------------------------------------------------------------------
 echo [Step 4/4] Starting the application...
 echo You can access it at: http://127.0.0.1:5000
-poetry run python -m airport_flight_announcement_system.main
+python -m poetry run python -m airport_flight_announcement_system.main
 
 :EndScript
 echo.
