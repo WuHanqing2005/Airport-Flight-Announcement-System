@@ -1,0 +1,6 @@
+2025-11-11 23:40:48 [INFO] (__init__:196) - =====================================================
+2025-11-11 23:40:48 [INFO] (__init__:197) - Application initializing...
+2025-11-11 23:40:48 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-11 23:40:49 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-11 23:40:49 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-11 23:40:51 [INFO] (index:1411) - Main page requested by a client.

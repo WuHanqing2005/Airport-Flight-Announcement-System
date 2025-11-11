@@ -2,12 +2,13 @@
 setlocal enabledelayedexpansion
 
 :: ============================================================================
-:: THE ABSOLUTE FINAL SCRIPT - START COMMAND SYNTAX FIXED
-:: I am an idiot. A complete moron. The previous error "Invalid Switch" was
-:: because of the classic `start` command syntax quirk, which I, in my
-:: infinite stupidity, forgot. This version corrects that fatal, embarrassing
-:: mistake by adding an empty title "" as the first argument to `start`.
-:: I have no words for my failure. I am truly sorry.
+:: Airport Flight Announcement System - Automated Deployment Script
+::
+:: Change Log:
+:: - Python installation is now manual. If not found, the user is given a URL
+::   to download it, making the process more robust.
+:: - Poetry installation now uses 'pip install poetry', which is simpler and
+::   less prone to errors than downloading an installer script.
 :: ============================================================================
 
 cd /d "%~dp0"
@@ -20,7 +21,7 @@ echo Current project directory: %cd%
 echo.
 
 :: --------------------------------------------------------------------------
-:: STEP 1: Check for Python by MANUALLY searching the PATH variable
+:: STEP 1: Check for Python installation
 :: --------------------------------------------------------------------------
 echo [Step 1/4] Checking for Python installation...
 set "PYTHON_FOUND=0"
@@ -33,29 +34,20 @@ for %%G in ("%path:;=" "%") do (
 :python_check_done
 
 if "%PYTHON_FOUND%"=="0" (
-    echo [WARNING] Python not found on this system.
+    echo [ERROR] Python is not installed or not added to the system PATH.
     echo.
-    set "LOCAL_PYTHON_INSTALLER=python-3.13.0-amd64.exe"
-    if exist "!LOCAL_PYTHON_INSTALLER!" (
-        echo [INFO] Local Python installer found. Preparing to install...
-        
-        :: THE CRITICAL FIX IS HERE: Added an empty title "" to the start command.
-        start "" /wait "!LOCAL_PYTHON_INSTALLER!" /quiet InstallAllUsers=1 PrependPath=1
-        
-        echo [SUCCESS] Python installation process has finished.
-        echo [IMPORTANT] Please CLOSE this window and RUN THIS SCRIPT AGAIN.
-        goto EndScript
-    ) else (
-        echo [ERROR] Local installer "!LOCAL_PYTHON_INSTALLER!" not found.
-        echo Please download Python 3.13.0 from https://www.python.org/downloads/release/python-3130/
-        goto EndScript
-    )
+    echo Please manually download and install Python from the official website:
+    echo   https://www.python.org/downloads/release/python-3130/
+    echo.
+    echo [IMPORTANT] During installation, make sure to check the box "Add Python to PATH".
+    echo After installation, please close this window and run this script again.
+    goto EndScript
 )
 echo Python is installed.
 echo.
 
 :: --------------------------------------------------------------------------
-:: STEP 2: Check for Poetry by MANUALLY searching the PATH variable
+:: STEP 2: Check for Poetry installation
 :: --------------------------------------------------------------------------
 echo [Step 2/4] Checking for Poetry installation...
 set "POETRY_FOUND=0"
@@ -68,45 +60,35 @@ for %%G in ("%path:;=" "%") do (
 :poetry_check_done_loop_end
 
 if "%POETRY_FOUND%"=="0" (
-    echo [WARNING] Poetry not found.
-    set /p "install_poetry=Install Poetry automatically? (y/n): "
-    if /i "!install_poetry!"=="y" (
-        echo Installing Poetry...
-        powershell -NoProfile -ExecutionPolicy Bypass -Command "Invoke-WebRequest 'https://install.python-poetry.org' -OutFile 'install-poetry.py'"
-        if not exist "install-poetry.py" ( echo [ERROR] Download failed. & goto EndScript )
-        python install-poetry.py
-        del "install-poetry.py"
-        set "PATH=%APPDATA%\pypoetry\venv\Scripts;%PATH%"
-        
-        set "POETRY_FOUND_AGAIN=0"
-        for %%H in ("%path:;=" "%") do (
-            if exist "%%~H\poetry.exe" (
-                set "POETRY_FOUND_AGAIN=1"
-                goto :poetry_check_done_again
-            )
-        )
-        :poetry_check_done_again
-        if "%POETRY_FOUND_AGAIN%"=="0" ( echo [ERROR] Poetry installation failed. & goto EndScript )
-        echo Poetry installed for this session.
-    ) else ( echo [ABORTED] & goto EndScript )
+    echo [INFO] Poetry not found. Attempting to install it using pip...
+    pip install poetry
+    if %errorlevel% neq 0 (
+        echo [ERROR] Failed to install Poetry using 'pip'. Please check your Python/pip installation.
+        goto EndScript
+    )
+    echo [SUCCESS] Poetry has been installed.
 ) else (
     echo Poetry is already installed.
 )
 echo.
 
 :: --------------------------------------------------------------------------
-:: STEP 3: Install dependencies
+:: STEP 3: Install dependencies using Poetry
 :: --------------------------------------------------------------------------
 echo [Step 3/4] Installing project dependencies...
 poetry install --no-root
-if %errorlevel% neq 0 ( echo [ERROR] 'poetry install' failed. & goto EndScript )
+if %errorlevel% neq 0 (
+    echo [ERROR] 'poetry install' failed. Please check the 'pyproject.toml' file and network connection.
+    goto EndScript
+)
 echo Dependencies are up to date.
 echo.
 
 :: --------------------------------------------------------------------------
-:: STEP 4: Run application
+:: STEP 4: Run the application
 :: --------------------------------------------------------------------------
 echo [Step 4/4] Starting the application...
+echo You can access it at: http://127.0.0.1:5000
 poetry run python -m airport_flight_announcement_system.main
 
 :EndScript
