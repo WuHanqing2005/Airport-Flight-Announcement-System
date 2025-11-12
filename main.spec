@@ -1,16 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-from PyInstaller.utils.hooks import collect_submodules
-
-hidden_imports = []
-hidden_imports += collect_submodules('eventlet')
-hidden_imports += collect_submodules('dns')
-hidden_imports += collect_submodules('greenlet')
-
-# =================================================================
-# 釜底抽薪的最终方案：强制为 Flask-SocketIO 加入 eventlet 的 hook
-# 这会让 PyInstaller 在打包时生成一个特殊脚本，告诉 Flask-SocketIO，eventlet 是可用的
-# =================================================================
 a = Analysis(
     ['src/airport_flight_announcement_system/main.py'],
     pathex=[],
@@ -21,24 +10,15 @@ a = Analysis(
         ('src/airport_flight_announcement_system/data', 'data'),
         ('src/airport_flight_announcement_system/material', 'material')
     ],
-    hiddenimports=hidden_imports,
-    # --- 这是解决问题的关键！---
+    hiddenimports=[],
     hookspath=[],
-    hooksconfig={
-        'flask_socketio': {
-            'async_mode': 'eventlet'
-        }
-    },
-    # ---------------------------
+    hooksconfig={},
     runtime_hooks=[],
     excludes=[],
     noarchive=False,
     optimize=0,
 )
-# =================================================================
-
 pyz = PYZ(a.pure)
-
 exe = EXE(
     pyz,
     a.scripts,
