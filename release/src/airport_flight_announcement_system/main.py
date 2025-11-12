@@ -15,7 +15,9 @@
 #
 # Use this command to run the app in development mode:
 #   poetry run python -m src.airport_flight_announcement_system.main
-
+#
+# To build a release executable with embedded dependencies, use:
+#   .\release\Scripts\pip.exe install -r requirements.txt --ignore-installed
 
 """
 Airport Flight Announcement System (Web Edition)
