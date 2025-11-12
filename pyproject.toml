@@ -1,30 +1,22 @@
 [project]
 name = "airport-flight-announcement-system"
-version = "0.1.0"
-description = "It is a system that can play film announcement automatically."
+version = "2025.11.12"
+description = ""
 authors = [
     {name = "WU HANQING",email = "wuhanqing2005@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.13"
-
-# --- 最终解决方案：彻底移除 Flask/Werkzeug, 回归桌面 GUI ---
 dependencies = [
-    # 使用 customtkinter 作为新的 GUI 框架
-    "customtkinter>=5.2.0,<6.0.0",
-    "pandas>=2.0.0,<3.0.0",
-    "openpyxl>=3.1.0,<4.0.0",
-    "pydub>=0.25.0,<0.26.0",
+    "flask (>=3.1.2,<4.0.0)",
+    "flask-socketio (>=5.5.1,<6.0.0)",
+    "pandas (>=2.3.3,<3.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pydub (>=0.25.1,<0.26.0)",
+    "audioop-lts (>=0.2.2,<0.3.0)"
 ]
 
-[tool.poetry]
-packages = [{include = "airport_flight_announcement_system", from = "src"}]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[dependency-groups]
-dev = [
-    "pyinstaller (>=6.16.0,<7.0.0)"
-]
