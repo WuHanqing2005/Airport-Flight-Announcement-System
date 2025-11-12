@@ -118,3 +118,51 @@
 2025-11-12 20:34:43 [INFO] (read_xlsx:456) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
 2025-11-12 20:34:43 [INFO] (__init__:235) - Application initialized successfully.
 2025-11-12 20:34:45 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:35:39 [INFO] (__init__:208) - =====================================================
+2025-11-12 20:35:39 [INFO] (__init__:209) - Application initializing...
+2025-11-12 20:35:39 [INFO] (_load_material_lists:328) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 20:35:39 [INFO] (read_xlsx:456) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 20:35:39 [INFO] (__init__:235) - Application initialized successfully.
+2025-11-12 20:35:41 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:07 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:08 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:08 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:08 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:08 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:09 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:09 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:10 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:10 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:10 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:20 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:20 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:20 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:21 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:21 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:21 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:21 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:21 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:22 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:22 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:22 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:22 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:23 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:23 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:23 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:23 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:24 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:24 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:24 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:25 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:25 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:25 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:27 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:27 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:36:27 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:43:13 [INFO] (index:1422) - Main page requested by a client.
+2025-11-12 20:54:45 [INFO] (__init__:208) - =====================================================
+2025-11-12 20:54:45 [INFO] (__init__:209) - Application initializing...
+2025-11-12 20:54:45 [INFO] (_load_material_lists:328) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 20:54:45 [INFO] (read_xlsx:456) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 20:54:45 [INFO] (__init__:235) - Application initialized successfully.
+2025-11-12 20:54:47 [INFO] (index:1422) - Main page requested by a client.
