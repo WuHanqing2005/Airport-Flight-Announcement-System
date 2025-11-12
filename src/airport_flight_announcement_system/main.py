@@ -48,21 +48,15 @@ Folder Structure (relative to project root):
 """
 
 # --- CRITICAL: Monkey-patch must be the first thing to run ---
-def run_monkey_patch():
-    """
-    CRITICAL: This function MUST be called before most other imports.
-    It patches standard libraries for eventlet compatibility.
-    """
-    # --- CRITICAL: Monkey-patch must be the first thing to run ---
-    import eventlet
-    # --- DIAGNOSTIC LINE ---
-    print(f"--- DIAGNOSTIC: Running with eventlet version: {eventlet.__version__} ---")
-    # This call will fail if the version is wrong.
-    eventlet.monkey_patch()
-    print("--- DIAGNOSTIC: monkey_patch() successful. ---")
+# This ensures standard library modules are cooperative with eventlet's green threads.
+import eventlet
 
-# Run the patch immediately.
-run_monkey_patch()
+# Apply monkey patching to standard library for cooperative multitasking
+eventlet.monkey_patch()
+
+# Diagnostic output to verify monkey patching
+print(f"--- DIAGNOSTIC: Running with eventlet version: {eventlet.__version__} ---")
+print("--- DIAGNOSTIC: monkey_patch() successful. ---")
 
 # --- Standard Library Imports ---
 import os
