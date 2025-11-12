@@ -28,8 +28,7 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
-    icon='static/favicon.ico'
+    console=False
 )
 coll = COLLECT(
     exe,
