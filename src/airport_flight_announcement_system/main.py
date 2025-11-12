@@ -58,7 +58,7 @@ def run_monkey_patch():
     # --- DIAGNOSTIC LINE ---
     print(f"--- DIAGNOSTIC: Running with eventlet version: {eventlet.__version__} ---")
     # This call will fail if the version is wrong.
-    eventlet.monkey_patch(dns=False)
+    eventlet.monkey_patch()
     print("--- DIAGNOSTIC: monkey_patch() successful. ---")
 
 # Run the patch immediately.
