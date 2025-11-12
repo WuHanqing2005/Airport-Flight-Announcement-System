@@ -1,7 +1,7 @@
 ('D:\\Working Files\\Github '
- 'Projects\\Airport-Flight-Announcement-System\\build\\main\\main.exe',
+ 'Projects\\Airport-Flight-Announcement-System\\build\\main\\AFAS.exe',
  True,
- False,
+ True,
  True,
  'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
  None,
@@ -31,7 +31,7 @@
  None,
  None,
  'D:\\Working Files\\Github '
- 'Projects\\Airport-Flight-Announcement-System\\build\\main\\main.pkg',
+ 'Projects\\Airport-Flight-Announcement-System\\build\\main\\AFAS.pkg',
  [('pyi-contents-directory _internal', '', 'OPTION'),
   ('PYZ-00.pyz',
    'D:\\Working Files\\Github '
@@ -63,14 +63,14 @@
   ('pyi_rth_inspect',
    'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
    'PYSOURCE'),
-  ('pyi_rth_setuptools',
-   'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
-   'PYSOURCE'),
   ('pyi_rth_pkgutil',
    'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
    'PYSOURCE'),
   ('pyi_rth_multiprocessing',
    'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_setuptools',
+   'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
    'PYSOURCE'),
   ('main',
    'D:\\Working Files\\Github '
@@ -79,8 +79,8 @@
  [],
  False,
  False,
- 1762923892,
- [('run.exe',
-   'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
+ 1762925464,
+ [('run_d.exe',
+   'C:\\Users\\wuhanqing\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\airport-flight-announcement-system-o0FMNvzg-py3.11\\Lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run_d.exe',
    'EXECUTABLE')],
  'C:\\Users\\wuhanqing\\AppData\\Local\\Programs\\Python\\Python311\\python311.dll')

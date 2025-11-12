@@ -54,6 +54,9 @@ import eventlet
 # Apply monkey patching to standard library for cooperative multitasking
 eventlet.monkey_patch()
 
+import time
+time.sleep(1)  # Yield to ensure monkey patching takes effect
+
 # Diagnostic output to verify monkey patching
 print(f"--- DIAGNOSTIC: Running with eventlet version: {eventlet.__version__} ---")
 print("--- DIAGNOSTIC: monkey_patch() successful. ---")
