@@ -28,3 +28,9 @@ build-backend = "poetry.core.masonry.api"
 dev = [
     "pyinstaller (>=6.16.0,<7.0.0)"
 ]
+
+# 在文件末尾添加下面这部分
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+default = true
