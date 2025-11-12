@@ -1,23 +1,20 @@
 [project]
 name = "airport-flight-announcement-system"
 version = "0.1.0"
-description = ""
+description = "It is a system that can play film announcement automatically."
 authors = [
     {name = "WU HANQING",email = "wuhanqing2005@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11,<3.15"
+requires-python = ">=3.13"
 
-# --- FINAL, STABLE SET FOR THREADING MODE ---
+# --- 最终解决方案：彻底移除 Flask/Werkzeug, 回归桌面 GUI ---
 dependencies = [
-    "flask==2.3.2",
-    "flask-socketio==5.3.6",
-    "python-socketio==5.10.0",
-    "python-engineio==4.8.0",
-    "pandas (>=2.3.3,<3.0.0)",
-    "openpyxl (>=3.1.5,<4.0.0)",
-    "pydub (>=0.25.1,<0.26.0)",
-    "pyinstaller (>=6.16.0,<7.0.0)",
+    # 使用 customtkinter 作为新的 GUI 框架
+    "customtkinter>=5.2.0,<6.0.0",
+    "pandas>=2.0.0,<3.0.0",
+    "openpyxl>=3.1.0,<4.0.0",
+    "pydub>=0.25.0,<0.26.0",
 ]
 
 [tool.poetry]
