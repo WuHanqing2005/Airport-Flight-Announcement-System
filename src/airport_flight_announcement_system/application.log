@@ -22,3 +22,35 @@
 2025-11-12 14:38:10 [INFO] (read_xlsx:469) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
 2025-11-12 14:38:10 [INFO] (__init__:247) - Application initialized successfully.
 2025-11-12 14:38:12 [INFO] (index:1435) - Main page requested by a client.
+2025-11-12 15:35:03 [INFO] (__init__:205) - =====================================================
+2025-11-12 15:35:03 [INFO] (__init__:206) - Application initializing...
+2025-11-12 15:35:03 [INFO] (_load_material_lists:325) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 15:35:03 [INFO] (read_xlsx:453) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 15:35:03 [INFO] (__init__:232) - Application initialized successfully.
+2025-11-12 15:35:05 [INFO] (index:1419) - Main page requested by a client.
+2025-11-12 15:35:08 [INFO] (search_and_synthesize:897) - Synthesis started. Flight: 'MU2546', Type: 'Check_in'.
+2025-11-12 15:35:09 [INFO] (search_and_synthesize:971) - Announcement successfully exported to: D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU2546_Check_in_20251112153509.wav
+2025-11-12 15:35:12 [INFO] (stop_all_audio:859) - STOP ALL requested by user.
+2025-11-12 15:35:12 [INFO] (stop_all_audio:862) - Stop event is now active. Active processes will terminate shortly.
+2025-11-12 15:35:14 [INFO] (clear_output_cache:755) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-12 15:35:14 [ERROR] (clear_output_cache:767) - Failed to delete D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU2546_Check_in_20251112153509.wav. Reason: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\Working Files\\Github Projects\\Airport-Flight-Announcement-System\\src\\airport_flight_announcement_system\\output\\MU2546_Check_in_20251112153509.wav'
+2025-11-12 15:35:18 [INFO] (search_and_synthesize:897) - Synthesis started. Flight: 'MU2546', Type: 'Arrival'.
+2025-11-12 15:35:18 [INFO] (search_and_synthesize:971) - Announcement successfully exported to: D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU2546_Arrival_20251112153518.wav
+2025-11-12 15:35:23 [INFO] (stop_all_audio:859) - STOP ALL requested by user.
+2025-11-12 15:35:23 [INFO] (stop_all_audio:862) - Stop event is now active. Active processes will terminate shortly.
+2025-11-12 15:35:24 [INFO] (clear_output_cache:755) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-12 15:35:24 [DEBUG] (clear_output_cache:764) - Deleted cache file: MU2546_Arrival_20251112153518.wav
+2025-11-12 15:35:24 [DEBUG] (clear_output_cache:764) - Deleted cache file: MU2546_Check_in_20251112153509.wav
+2025-11-12 15:35:24 [INFO] (clear_output_cache:774) - Successfully cleared cache. 2 files deleted.
+2025-11-12 15:49:46 [INFO] (__init__:61) - =====================================================
+2025-11-12 15:49:46 [INFO] (__init__:62) - Application initializing...
+2025-11-12 15:49:46 [INFO] (_load_material_lists:111) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 15:49:46 [INFO] (read_xlsx:154) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 15:49:46 [INFO] (__init__:79) - Application initialized successfully.
+2025-11-12 15:49:48 [INFO] (index:561) - Main page requested by a client.
+2025-11-12 15:56:38 [INFO] (__init__:205) - =====================================================
+2025-11-12 15:56:38 [INFO] (__init__:206) - Application initializing...
+2025-11-12 15:56:38 [INFO] (_load_material_lists:325) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 15:56:38 [INFO] (read_xlsx:453) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 15:56:38 [INFO] (__init__:232) - Application initialized successfully.
+2025-11-12 15:56:40 [INFO] (index:1419) - Main page requested by a client.

@@ -10,7 +10,11 @@ a = Analysis(
         ('src/airport_flight_announcement_system/data', 'data'),
         ('src/airport_flight_announcement_system/material', 'material')
     ],
-    hiddenimports=[],
+    # --- THIS IS THE FINAL ATTEMPT ---
+    hiddenimports=[
+        'engineio.async_threading',
+        'socketio.simple_client'
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -29,7 +33,7 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
