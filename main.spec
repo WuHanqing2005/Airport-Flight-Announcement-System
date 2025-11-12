@@ -7,12 +7,14 @@ hidden_imports += collect_submodules('eventlet')
 hidden_imports += collect_submodules('dns')
 hidden_imports += collect_submodules('greenlet')
 
+# =================================================================
+# 釜底抽薪的最终方案：强制为 Flask-SocketIO 加入 eventlet 的 hook
+# 这会让 PyInstaller 在打包时生成一个特殊脚本，告诉 Flask-SocketIO，eventlet 是可用的
+# =================================================================
 a = Analysis(
     ['src/airport_flight_announcement_system/main.py'],
     pathex=[],
-    # --- 这是新加入的关键部分 ---
-    binaries=[('external_binaries/ffmpeg.exe', '.')],
-    # ---------------------------
+    binaries=[],
     datas=[
         ('src/airport_flight_announcement_system/static', 'static'),
         ('src/airport_flight_announcement_system/templates', 'templates'),
@@ -20,13 +22,21 @@ a = Analysis(
         ('src/airport_flight_announcement_system/material', 'material')
     ],
     hiddenimports=hidden_imports,
+    # --- 这是解决问题的关键！---
     hookspath=[],
-    hooksconfig={},
+    hooksconfig={
+        'flask_socketio': {
+            'async_mode': 'eventlet'
+        }
+    },
+    # ---------------------------
     runtime_hooks=[],
     excludes=[],
     noarchive=False,
     optimize=0,
 )
+# =================================================================
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
@@ -35,11 +45,11 @@ exe = EXE(
     [],
     exclude_binaries=True,
     name='AFAS',
-    debug=False, # 可以先关掉debug，如果还出问题再打开
+    debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False, # Web服务最终应该在后台运行
+    console=False,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
