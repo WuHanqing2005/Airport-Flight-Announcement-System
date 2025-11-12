@@ -4,3 +4,72 @@
 2025-11-11 23:40:49 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
 2025-11-11 23:40:49 [INFO] (__init__:223) - Application initialized successfully.
 2025-11-11 23:40:51 [INFO] (index:1411) - Main page requested by a client.
+2025-11-12 10:54:10 [INFO] (__init__:196) - =====================================================
+2025-11-12 10:54:10 [INFO] (__init__:197) - Application initializing...
+2025-11-12 10:54:10 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 10:58:43 [INFO] (__init__:196) - =====================================================
+2025-11-12 10:58:43 [INFO] (__init__:197) - Application initializing...
+2025-11-12 10:58:43 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 10:58:44 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 10:58:44 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 10:58:45 [INFO] (__init__:196) - =====================================================
+2025-11-12 10:58:45 [INFO] (__init__:197) - Application initializing...
+2025-11-12 10:58:45 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 10:58:45 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 10:58:45 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:00:49 [INFO] (__init__:196) - =====================================================
+2025-11-12 11:00:49 [INFO] (__init__:197) - Application initializing...
+2025-11-12 11:00:49 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:00:49 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:00:49 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:00:50 [INFO] (__init__:196) - =====================================================
+2025-11-12 11:00:50 [INFO] (__init__:197) - Application initializing...
+2025-11-12 11:00:50 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:00:51 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:00:51 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:01:36 [INFO] (__init__:196) - =====================================================
+2025-11-12 11:01:36 [INFO] (__init__:197) - Application initializing...
+2025-11-12 11:01:36 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:01:36 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:01:36 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:01:37 [INFO] (__init__:196) - =====================================================
+2025-11-12 11:01:37 [INFO] (__init__:197) - Application initializing...
+2025-11-12 11:01:37 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:01:38 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:01:38 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:15:54 [INFO] (__init__:196) - =====================================================
+2025-11-12 11:15:54 [INFO] (__init__:197) - Application initializing...
+2025-11-12 11:15:54 [INFO] (_load_material_lists:316) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:15:54 [INFO] (read_xlsx:445) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:15:54 [INFO] (__init__:223) - Application initialized successfully.
+2025-11-12 11:15:56 [INFO] (index:1411) - Main page requested by a client.
+2025-11-12 11:16:07 [INFO] (search_and_synthesize:889) - Synthesis started. Flight: 'CZ627 CA5022 MU656', Type: 'Check_in'.
+2025-11-12 11:16:10 [INFO] (search_and_synthesize:963) - Announcement successfully exported to: D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\CZ627_CA5022_MU656_Check_in_20251112111610.wav
+2025-11-12 11:16:13 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:13 [INFO] (stop_all_audio:854) - Stop event is now active. Active processes will terminate shortly.
+2025-11-12 11:16:17 [INFO] (search_and_synthesize:889) - Synthesis started. Flight: 'MU9192', Type: 'Check_in'.
+2025-11-12 11:16:18 [INFO] (search_and_synthesize:963) - Announcement successfully exported to: D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU9192_Check_in_20251112111618.wav
+2025-11-12 11:16:21 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:21 [INFO] (stop_all_audio:854) - Stop event is now active. Active processes will terminate shortly.
+2025-11-12 11:16:23 [INFO] (clear_output_cache:747) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-12 11:16:23 [DEBUG] (clear_output_cache:756) - Deleted cache file: 3U8633_Check_in_20251111214533.wav
+2025-11-12 11:16:23 [DEBUG] (clear_output_cache:756) - Deleted cache file: CZ627_CA5022_MU656_Check_in_20251112111610.wav
+2025-11-12 11:16:23 [ERROR] (clear_output_cache:759) - Failed to delete D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU9192_Check_in_20251112111618.wav. Reason: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\Working Files\\Github Projects\\Airport-Flight-Announcement-System\\src\\airport_flight_announcement_system\\output\\MU9192_Check_in_20251112111618.wav'
+2025-11-12 11:16:27 [INFO] (clear_output_cache:747) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-12 11:16:27 [ERROR] (clear_output_cache:759) - Failed to delete D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU9192_Check_in_20251112111618.wav. Reason: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\Working Files\\Github Projects\\Airport-Flight-Announcement-System\\src\\airport_flight_announcement_system\\output\\MU9192_Check_in_20251112111618.wav'
+2025-11-12 11:16:28 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:28 [DEBUG] (stop_all_audio:857) - Stop event was already active; ignoring duplicate request.
+2025-11-12 11:16:29 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:29 [DEBUG] (stop_all_audio:857) - Stop event was already active; ignoring duplicate request.
+2025-11-12 11:16:29 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:29 [DEBUG] (stop_all_audio:857) - Stop event was already active; ignoring duplicate request.
+2025-11-12 11:16:29 [INFO] (stop_all_audio:851) - STOP ALL requested by user.
+2025-11-12 11:16:29 [DEBUG] (stop_all_audio:857) - Stop event was already active; ignoring duplicate request.
+2025-11-12 11:16:30 [INFO] (clear_output_cache:747) - User triggered 'Clear Cache'. Deleting all generated audio files.
+2025-11-12 11:16:30 [ERROR] (clear_output_cache:759) - Failed to delete D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\output\MU9192_Check_in_20251112111618.wav. Reason: [WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\Working Files\\Github Projects\\Airport-Flight-Announcement-System\\src\\airport_flight_announcement_system\\output\\MU9192_Check_in_20251112111618.wav'
+2025-11-12 11:20:43 [INFO] (__init__:210) - =====================================================
+2025-11-12 11:20:43 [INFO] (__init__:211) - Application initializing...
+2025-11-12 11:20:43 [INFO] (_load_material_lists:330) - Material lists loaded: 47 cities, 23 airlines, 2 reasons.
+2025-11-12 11:20:43 [INFO] (read_xlsx:459) - Successfully loaded 7 flight rows from 'D:\Working Files\Github Projects\Airport-Flight-Announcement-System\src\airport_flight_announcement_system\data\data.xlsx'.
+2025-11-12 11:20:43 [INFO] (__init__:237) - Application initialized successfully.
+2025-11-12 11:20:45 [INFO] (index:1425) - Main page requested by a client.

@@ -63,7 +63,21 @@ from pathlib import Path  # New: robust absolute path computation without changi
 
 # Compute the application root directory in a robust way
 # This is the directory where main.py resides. All other resource folders are relative to this.
-APP_ROOT = Path(__file__).resolve().parent
+## APP_ROOT = Path(__file__).resolve().parent
+
+import sys
+from pathlib import Path
+
+def get_app_root():
+    """Gets the application root path for both normal script and PyInstaller bundle."""
+    if getattr(sys, 'frozen', False):
+        # We are running in a PyInstaller bundle. The root is the directory of the .exe file.
+        return Path(sys.executable).parent.resolve()
+    else:
+        # We are running in a normal Python environment.
+        return Path(__file__).resolve().parent
+
+APP_ROOT = get_app_root()
 
 # --- Third-Party Library Imports ---
 from flask import Flask, render_template, request, jsonify, send_from_directory
