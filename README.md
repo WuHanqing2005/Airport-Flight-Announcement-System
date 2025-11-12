@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/WuHanqing2005/Airport-Flight-Announcement-System">
-    <img src="https://github.com/WuHanqing2005/Airport-Flight-Announcement-System//docs/screenshot.png" alt="System Screenshot / 系统截图" width="850">
+    <img src="./docs/screenshot.png" alt="System Screenshot / 系统截图" width="850">
   </a>
 </p>
 <p align="center">
