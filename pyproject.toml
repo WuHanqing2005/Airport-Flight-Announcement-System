@@ -6,7 +6,7 @@ authors = [
     {name = "WU HANQING",email = "wuhanqing2005@gmail.com"}
 ]
 readme = "README.md"
-requires-python = "^3.11"
+requires-python = ">=3.11,<3.15"
 dependencies = [
     "flask (>=3.1.2,<4.0.0)",
     "flask-socketio (>=5.5.1,<6.0.0)",
@@ -14,7 +14,6 @@ dependencies = [
     "pandas (>=2.3.3,<3.0.0)",
     "openpyxl (>=3.1.5,<4.0.0)",
     "pydub (>=0.25.1,<0.26.0)",
-    "audioop-lts (>=0.2.2,<0.3.0)",
 ]
 
 [tool.poetry]
