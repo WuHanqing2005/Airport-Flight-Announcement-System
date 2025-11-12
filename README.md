@@ -1,399 +1,321 @@
 # Airport Flight Announcement System / 机场航班广播系统
 
-Airport Flight Announcement System — an offline GUI tool that composes and plays airport announcements by stitching high‑quality WAV voice packs.  
-离线可用的机场广播系统——通过拼接高质量 WAV 语音包来合成并播放机场广播，并提供可视化图形界面。
+<p align="center">
+  <a href="https://github.com/WuHanqing2005/Airport-Flight-Announcement-System">
+    <img src="https://github.com/WuHanqing2005/Airport-Flight-Announcement-System//docs/screenshot.png" alt="System Screenshot / 系统截图" width="850">
+  </a>
+</p>
+<p align="center">
+    <img src="https://img.shields.io/badge/For-Windows%2010/11-blue.svg" alt="For Windows 10/11">
+    <img src="https://img.shields.io/badge/Status-Ready%20to%20Use-brightgreen.svg" alt="Ready to Use">
+    <img src="https://img.shields.io/badge/License-Proprietary-red.svg" alt="License">
+</p>
+
+An offline-first, GUI-driven tool that composes and plays high-quality, multi-lingual airport announcements by stitching pre-recorded WAV voice packs.  
+一款离线可用的、带图形界面的机场广播系统。它通过拼接高质量的 WAV 语音包来合成并播放多语言的、专业级的机场广播。
 
 ---
 
 ## About the Author / 关于作者
 
-- Author / 作者: Wu Hanqing (Daniel) / 吴瀚庆（Daniel）  
-- Vision / 初衷: Make airport audio operations reliable, efficient, and easy for non‑technical staff / 让机场广播生成更稳定高效，便于非技术人员使用  
-- Copyright / 版权: All rights reserved by Wu Hanqing / 版权所有 © 吴瀚庆  
-- License Note / 许可声明: Unauthorized use or redistribution is prohibited; infringement will be pursued / 未经允许禁止使用或传播，侵权必究  
-- Appreciation / 致谢: Your feedback drives improvement / 感谢您的反馈使项目不断进步
-
----
-
-## Basic Information / 基本信息
-
-| Item | English | 中文 |
-| ---- | ------- | ---- |
-| Software Name | Airport Flight Announcement System | 航班广播语音系统 |
-| Version | 2025.11.11 | 2025.11.11 |
-| Copyright Holder | Wu Hanqing | 吴瀚庆 |
-| License Statement | Unauthorized use prohibited; infringement will be prosecuted | 未经允许禁止盗用，侵权必究 |
+- **Author / 作者**: Wu Hanqing (Daniel) / 吴瀚庆（Daniel）  
+- **Vision / 初衷**: To make airport audio operations reliable, efficient, and easy for non-technical staff. / 让机场广播的生成与播报更稳定、高效，便于非技术人员使用。
+- **Copyright / 版权**: Copyright © Wu Hanqing. All Rights Reserved. / 版权所有 © 吴瀚庆。
+- **License Note / 许可声明**: Unauthorized use or redistribution for any purpose is strictly prohibited. Infringement will be pursued. / 未经授权，严禁出于任何目的使用或传播本软件。侵权必究。
 
 ---
 
 ## Contact / 联系方式
 
-- WeChat / 微信: Daniel_Qinghan  
-- Phone / 手机: +86-195-2887-3640 ; +82-010-7435-5296  
-- Email / 邮箱: wuhanqing2005@gmail.com  
+- **WeChat / 微信**: `Daniel_Qinghan`  
+- **Phone / 手机**: `+86-195-2887-3640` (CN) / `+82-010-7435-5296` (KR)  
+- **Email / 邮箱**: `wuhanqing2005@gmail.com`  
 
-Welcome to reach out for cooperation, feature requests, and voice pack customization. / 欢迎就合作、功能需求及语音包定制联系我。
+Welcome to reach out for cooperation, feature requests, and voice pack customization. / 欢迎就项目合作、功能需求及语音包定制事宜与我联系。
 
 ---
 
 ## Table of Contents / 目录
 
-1. Features / 功能特性  
-2. System Requirements / 系统要求  
-3. Installation / 安装部署  
-4. Quick Start / 快速上手  
-5. Data Model & Fields / 数据模型与字段说明  
-6. GUI Overview & Operations / 界面总览与操作指南  
-7. Broadcast Types & Examples / 广播类型与示例文本  
-8. File & Folder Structure / 目录与文件结构  
-9. Voice Pack Rules / 语音包规范  
-10. Best Practices / 使用建议与注意事项  
-11. Troubleshooting & FAQ / 故障排查与常见问题  
-12. Backup & Data Safety / 备份与数据安全  
-13. Roadmap / 开发路线图  
-14. Contributing / 贡献方式  
-15. License & Disclaimer / 许可与声明  
-16. Changelog / 更新日志  
-17. Appendix: Data Entry Tips / 附录：数据录入技巧  
+1.  [**Quick Start Guide (For End-Users)** / **快速上手指南 (最终用户)**](#1-quick-start-guide-for-end-users--快速上手指南-最终用户)
+    -   [1.1 Download & Unzip / 下载与解压](#11-download--unzip--下载与解压)
+    -   [1.2 Launch the Application / 启动程序](#12-launch-the-application--启动程序)
+    -   [1.3 Interface Overview / 界面概览](#13-interface-overview--界面概览)
+2.  [**Core Operation Workflow** / **核心操作流程**](#2-core-operation-workflow--核心操作流程)
+    -   [2.1 Adding a New Flight / 添加一个新航班](#21-adding-a-new-flight--添加一个新航班)
+    -   [2.2 Generating & Playing Announcements / 生成并播放广播](#22-generating--playing-announcements--生成并播放广播)
+    -   [2.3 Editing & Deleting Flights / 编辑与删除航班](#23-editing--deleting-flights--编辑与删除航班)
+    -   [2.4 Saving & Refreshing Data / 保存与刷新数据](#24-saving--refreshing-data--保存与刷新数据)
+3.  [**`release` Folder Explained** / **`release` 文件夹内容详解**](#3-release-folder-explained--release-文件夹内容详解)
+4.  [**Frequently Asked Questions (FAQ)** / **常见问题与解决方案**](#4-frequently-asked-questions-faq--常见问题与解决方案)
+5.  [**Broadcast Types & Data Fields** / **广播类型与数据字段说明**](#5-broadcast-types--data-fields--广播类型与数据字段说明)
+6.  [**Changelog** / **更新日志**](#6-changelog--更新日志)
+7.  [**License & Disclaimer** / **许可与声明**](#7-license--disclaimer--许可与声明)
+8.  [**(For Developers) Local Development Setup** / **(开发者参考) 本地开发部署**](#8-for-developers-local-development-setup--开发者参考-本地开发部署)
 
 ---
 
-## 1. Features / 功能特性
+## 1. Quick Start Guide (For End-Users) / 快速上手指南 (最终用户)
 
-- Offline synthesis via stitching WAV units (no external TTS) / 通过拼接 WAV 单元离线合成（无需外部 TTS）  
-- GUI built with tkinter (progress bar + error dialogs) / 基于 tkinter 的 GUI（含进度条 + 可视化报错）  
-- Persistent Excel storage (data/data.xlsx) / Excel 文件持久化存储（data/data.xlsx）  
-- Multi-language: CN + EN (+ optional JA / KO) / 多语言：中英（可选日语 / 韩语）  
-- Flexible counters & shared flights (ranges with "-", multi-flight with space) / 灵活值机柜台（“-”表示范围），共享航班号用空格  
-- Multiple broadcast types (Check-in, Arrival, Baggage, Delay variants) / 多类广播（值机、到达、行李、延误类型）  
-- Right-click context menu for play/edit/delete (since 2025-10-01) / 右键菜单快捷播放/编辑/删除（2025-10-01 起）  
-- Stop-all-processes button / “停止所有进程”按钮  
-- Automatic stereo conversion for WAV / 自动转换语音包为双声道  
-- Consistent output naming: FlightNumber-AnnouncementType.wav / 统一输出命名：航班号-广播类型.wav  
+This guide is designed for operators who will be using the software directly. No programming knowledge is required.  
+本指南为直接使用本软件的操作人员设计。无需任何编程知识。
+
+### 1.1 Download & Unzip / 下载与解压
+
+1.  Go to the project's [GitHub Releases page](https://github.com/WuHanqing2005/Airport-Flight-Announcement-System/releases).  
+    访问本项目的 [GitHub Releases 页面](https://github.com/WuHanqing2005/Airport-Flight-Announcement-System/releases)。
+2.  Find the latest version and download the `release.zip` file.  
+    找到最新版本的 `release.zip` 文件并下载。
+3.  After downloading, right-click `release.zip` and select "**Extract All...**".  
+    下载完成后，右键点击 `release.zip` 文件，选择“**全部解压缩...**”。
+4.  You will get a folder named `release`. This is your main application directory.  
+    您将得到一个名为 `release` 的文件夹。这就是您的主程序目录。
+
+### 1.2 Launch the Application / 启动程序
+
+1.  Enter the extracted `release` folder.  
+    进入解压后的 `release` 文件夹。
+2.  Find and **double-click** the file named `start.bat`.  
+    找到并**双击**名为 `start.bat` 的文件。
+    > This is the startup script. Its icon might look like a window with gears.  
+    > 这是一个启动脚本，图标可能是一个带有齿轮的窗口。
+3.  A black command window will pop up first. **Do not close it.** After a few seconds, your default web browser will automatically open and display the main interface.  
+    程序启动时，会先弹出一个黑色的命令窗口，请**不要关闭它**。几秒钟后，系统会自动打开您的默认浏览器，并显示软件主界面。
+
+**Congratulations! The application is now running.**  
+**恭喜！程序已成功运行。**
+
+### 1.3 Interface Overview / 界面概览
+
+- **Main Flight Table / 主航班列表**: The central area of the screen, displaying all flight information. / 屏幕中央的核心区域，显示所有航班信息。
+- **Top Toolbar / 顶部工具栏**: Contains core action buttons like "Add Flight," "Delete Selected," and "New Announcement." / 包含“添加航班”、“删除选中”、“制作新广播”等核心功能按钮。
+- **Right-side Toolbar / 右侧工具栏**: For data management, such as "Refresh from Disk" and "Save to Disk." / 用于管理数据，如“从磁盘刷新”和“保存到磁盘”。
+- **Log Viewer / 底部日志区**: Shows real-time backend activity, helping you understand what the program is doing. / 实时显示程序后台的运行状态，帮助您了解当前正在发生什么。
+
+## 2. Core Operation Workflow / 核心操作流程
+
+### 2.1 Adding a New Flight / 添加一个新航班
+
+1.  Click the **[Add Flight]** button on the top toolbar.  
+    点击顶部工具栏的 **[Add Flight]** 按钮。
+2.  In the pop-up window, fill in the flight details (flight number, destination, gate, etc.).  
+    在弹出的窗口中，依次填写航班的详细信息（航班号、目的地、登机口等）。
+    > **Tip**: For field-specific rules, refer to the [Data Fields Guide](#5-broadcast-types--data-fields--广播类型与数据字段说明).  
+    > **提示**: 关于每个字段的填写规则，请参考 [数据字段说明](#5-broadcast-types--data-fields--广播类型与数据字段说明) 部分。
+3.  Click **[Add]** when done. The new flight will immediately appear in the main table.  
+    填写完毕后，点击 **[Add]** 按钮。新航班将立刻出现在主航班列表中。
+
+### 2.2 Generating & Playing Announcements / 生成并播放广播
+
+1.  In the main flight table, **click** to select the flight you want to announce.  
+    在主航班列表中，**单击**选中您想播报的航班。
+2.  Click the **[New Announcement]** button on the top toolbar.  
+    点击顶部工具栏的 **[New Announcement]** 按钮。
+3.  In the pop-up, select the **Broadcast Type** (e.g., Check-in, Arrival, Delay) from the dropdown menu.  
+    在弹窗中，从下拉菜单里选择您想制作的**广播类型**（如：值机、到达、延误等）。
+4.  Click **[Generate & Play]**.  
+    点击 **[Generate & Play]** 按钮。
+5.  The system will synthesize the audio (progress will be shown in the log viewer) and play it automatically upon completion. The generated audio file is saved in the `output` folder.  
+    系统会开始合成音频（底部日志区会显示进度），完成后将自动播放。制作好的音频文件会保存在 `output` 文件夹内。
+
+### 2.3 Editing & Deleting Flights / 编辑与删除航班
+
+- **To Edit / 编辑**: **Right-click** on a flight in the table and select **[Edit]** from the context menu. / 在主航班列表上，**右键单击**您想修改的航班，在弹出的菜单中选择 **[Edit]**。
+- **To Delete / 删除**:
+    - **Single Delete / 单个删除**: Right-click a flight and select **[Delete]**. / 右键单击要删除的航班，选择 **[Delete]**。
+    - **Bulk Delete / 批量删除**: Hold the `Ctrl` key and click multiple flights, then click the **[Delete Selected]** button on the top toolbar. / 按住 `Ctrl` 键并单击多个航班，然后点击顶部工具栏的 **[Delete Selected]** 按钮。
+
+### 2.4 Saving & Refreshing Data / 保存与刷新数据
+
+- **To Save / 保存**: After adding, editing, or deleting flights, always click **[Save to Disk]** on the right-side toolbar to permanently save all changes to the `data.xlsx` file. / 在您添加、编辑或删除了航班信息后，务必点击右侧的 **[Save to Disk]** 按钮，以将所有更改永久保存到 `data.xlsx` 文件中。
+- **To Refresh / 刷新**: If you manually edited the `data.xlsx` file or the interface seems out of sync, click **[Refresh from Disk]** to reload the latest data from the file. / 如果您手动修改了 `data.xlsx` 文件，或者感觉界面显示不正确，可以点击 **[Refresh from Disk]** 按钮，从文件中重新加载最新的航班数据。
+
+## 3. `release` Folder Explained / `release` 文件夹内容详解
+
+Understanding the contents of the `release` folder will help you use the software better.  
+了解 `release` 文件夹中各个部分的作用能帮助您更好地使用本软件。
+
+- **`start.bat` (Application Starter / 启动程序)**
+  > This is the **only file you need to double-click**. It's the shortcut to launch the entire application.  
+  > **您唯一需要双击的文件**。它是启动整个软件的快捷方式。
+
+- **`data` (Data Folder / 数据文件夹)**
+  > Contains `data.xlsx`, your flight information database. You can open it with Excel to bulk edit or back up your data.  
+  > 存放 `data.xlsx` 文件，这是您的航班信息数据库。您可以直接用 Excel 打开它来批量编辑或备份数据。
+
+- **`output` (Audio Output Folder / 音频输出文件夹)**
+  > All generated announcement audio files (`.wav`) are saved here. You can access this folder to find, play, or manage these files.  
+  > 所有通过本软件生成的广播音频（`.wav` 文件）都会保存在这里。您可以随时进入此文件夹查找、播放或管理这些音频。
+
+- **`material` (Voice Pack Library / 语音素材库)**
+  > Contains all the raw voice clips used to build announcements (e.g., "Beijing," "Tokyo," "flight"). **Do not modify or delete any content in this folder**, as it will cause announcements to fail.  
+  > 存放所有用于拼接广播的原始语音片段（如“北京”、“东京”、“航班”等）。**请勿修改或删除此文件夹内的任何内容**，否则会导致广播无法正常生成。
+
+- **`src`, `python`, `ffmpeg.exe` (Core Engine / 软件核心引擎)**
+  > These are the core programs and libraries that make the software run. **Please treat them as a "black box." Do not move, rename, or delete them.**  
+  > 这些是保证软件正常运行的核心程序和依赖库。**请将它们视为“黑匣子”，完全不需要也请不要进行任何移动、重命名或删除操作。**
+
+## 4. Frequently Asked Questions (FAQ) / 常见问题与解决方案
+
+| Issue / 问题 | Possible Cause / 可能原因 | Solution / 解决方案 |
+| :--- | :--- | :--- |
+| **Application flashes and closes / 双击 `start.bat` 后，程序一闪而过** | Your system may be missing required runtimes, or an antivirus program may have quarantined files. / 您的系统可能缺少必要的运行库，或者文件被杀毒软件误删。 | 1. Try right-clicking `start.bat` and selecting "Run as administrator." / 尝试在 `start.bat` 上右键，选择“以管理员身份运行”。<br>2. Temporarily disable your antivirus, re-extract the zip file, and run again. / 暂时关闭杀毒软件后重新解压并运行。 |
+| **Announcement fails, error `FileNotFoundError` / 广播无法生成，或提示 `FileNotFoundError`** | A voice clip is missing from `material`, or a city/airline name you entered has no corresponding voice pack. / `material` 语音素材库中的文件缺失，或您输入的地名/航司名没有对应的语音包。 | 1. Ensure the `material` folder is intact. / 确保 `material` 文件夹完整。<br>2. Check if the city/airline name is spelled correctly. / 检查您输入的城市/航司名称是否正确。<br>3. Contact the author for new voice packs. / 如需新增语音，请联系作者。 |
+| **Audio is distorted or silent / 声音失真或没有声音** | The source audio format is incompatible (e.g., mono). / 音频素材格式不兼容（如单声道）。 | Click the **[Convert Audio]** button on the right-side toolbar. This will automatically convert all files in the `material` folder to the standard format. / 点击界面右侧的 **[Convert Audio]** 按钮。该功能会自动将 `material` 文件夹内所有音频转换为标准格式。 |
+| **Cannot save data / 无法保存数据** | The `data/data.xlsx` file is open in another program (like Microsoft Excel). / `data/data.xlsx` 文件正被另一个程序（如 Microsoft Excel）打开。 | Close the file in the other program, then click **[Save to Disk]** again. / 请先关闭正在编辑 `data.xlsx` 的 Excel 程序，然后再点击 **[Save to Disk]**。 |
+
+## 5. Broadcast Types & Data Fields / 广播类型与数据字段说明
+
+**Supported Broadcast Types / 支持的广播类型**:
+- `Check-in` / 值机广播
+- `Arrival` / 到达广播
+- `Baggage_Claim` / 行李提取
+- `Departure_Delay_Determined` / 出发延误（时间已定）
+- ...and more. See the full list in the "New Announcement" pop-up. / ...以及更多。请在“New Announcement”弹窗中查看完整列表。
+
+**Data Fields Guide / 数据字段填写指南**:
+
+| Field (EN) / 字段 (中文) | Description / 填写说明 | Example / 示例 |
+| :--- | :--- | :--- |
+| **Flight Number / 航班号** | For codeshares, separate with a **space**. / 共享航班请用**空格**隔开。 | `CZ627 MU1234` |
+| **Check-in Counter / 值机柜台** | For ranges, use a **hyphen** `-`. / 连续柜台请用**连字符** `-`。 | `F01-F06` |
+| **Time Fields / 时间字段** | Must use `HH:MM` 24-hour format. / 必须使用 `HH:MM` 格式的24小时制。 | `09:30` or `21:45` |
+| **Language Type / 语言类型** | Uppercase language codes, separated by a **hyphen** `-`. / 大写语言代码，用**连字符** `-` 分隔。 | `CN-EN` or `CN-EN-JP` |
+
+## 6. Changelog / 更新日志
+
+- **2025.11.11**: **Major Architecture Upgrade**. 
+Migrated project to a Python + Web architecture (Flask backend + Bootstrap 5 frontend) for a more robust, maintainable, and feature-rich platform. 
+**重大架构升级**。项目迁移至 Python + Web 架构（Flask 后端 + Bootstrap 5 前端），为更健壮、可维护和功能丰富的平台奠定基础。
+
+- **2025.10.01**: 
+Added right-click context menu for table rows; added success toast notifications. 
+新增表格右键菜单；增加成功操作的提示。
+
+- **2024.11.11**: 
+Added Divert, Scheduled/Estimated Time, and Delay Reason fields to the data model and UI. 
+新增备降、计划/预计时间、延误原因字段。
+
+- **2024.10.27**: 
+Fixed saving; re-synthesized some packs with GPT-SoVITS. 
+修复保存问题；用 GPT-SoVITS 重合成部分语音。
+
+- **2024.06.14**: 
+Added Exit on login; UI improved. 
+登录界面新增退出；界面美化。
+
+- **2024.05.20**: 
+Added more voice resources. 
+新增语音资源。
+
+- **2024.05.06**: 
+Implemented automatic stereo conversion for all source audio files. 
+实现对所有源音频文件的自动双声道转换功能。
+
+- **2024.05.05**: 
+Fixed WinError 2; all packs stereo; improved `refresh_table()`. 
+修复 WinError2；全部语音包双声道；完善 `refresh_table()`。
+
+- **2024.05.02**: 
+Python interpreter compatibility adjustments. 
+调整解释器兼容性。
+
+- **2024.05.01**: 
+Switched interface to English; voice file renaming to EN. 
+界面改为英文；语音文件英文化。
+
+- **2024.04.30**: 
+Shared flights supported (space-separated); English arrival added. 
+支持共享航班；补全到达英文部分。
+
+- **2024.04.29**: 
+Introduced a real-time progress bar; beautified UI. 
+为耗时任务引入实时进度条，并美化界面。
+
+- **2024.04.28**: 
+Implemented the "Stop All Processes" button; made all file paths portable. 
+实现“停止所有进程”按钮；使所有文件路径可移植。
+
+- **2024.04.27**: 
+Migrated data storage to a persistent `data.xlsx` file. 
+数据存储迁移至持久化的 `data.xlsx` 文件。
+
+- **2024.04.26**: 
+Added language combinations (CN-EN-JA...); stronger checks. 
+增加语言组合；增强检查。
+
+- **2024.04.17**: 
+Framework for broadcast type selection. 
+广播类型选择框架。
+
+- **2024.04.11**: 
+Removed unused code; generate text transcript with audio. 
+删除无用代码；生成文本与音频。
+
+- **2024.04.10**: 
+Logic & comments improved; example flights updated. 
+优化逻辑与注释；更新示例航班。
+
+- **2024.04.08**: 
+Added Boarding Gate & Baggage Claim; manual city input. 
+新增登机口与行李转盘；手动城市输入。
+
+- **2024.04.07**: 
+Completed English templates; city pack existence check. 
+完善英文模板；检测城市语音包。
+
+- **2024.04.06**: 
+English check-in sentences; input validation; voice refinement. 
+英文句型；输入校验；优化语音。
+
+- **2024.04.05**: 
+Counter range logic improved; visual error dialogs added. 
+值机柜台范围逻辑改进；新增可视化报错。
+
+- **2024.04.04**: 
+Bug fixes. 
+修复若干问题。
+
+- **2024.04.02**: 
+Project initiated; switched from Google TTS to local WAV stitching. 
+项目启动；核心概念由在线 TTS 转向本地 WAV 拼接。
+
+- **2025.11.12**: 
+**Major Architecture Upgrade**: Migrated the user interface from `tkinter` to a modern web-based architecture. The system now utilizes a Python (Flask) backend to serve a dynamic HTML frontend, offering a more flexible and user-friendly experience. Adopted `Poetry` for robust dependency and environment management. 
+**重大架构升级**：用户界面从原生的 `tkinter` 迁移至现代化的 Web 架构。 系统现采用 Python (Flask) 作为后端，驱动动态 HTML 前端界面，提供更灵活、更友好的用户体验。 引入 `Poetry` 进行更稳健的依赖与环境管理。
+
+## 7. License & Disclaimer / 许可与声明
+
+- **Copyright © Wu Hanqing (Daniel Wu Hanqing). All Rights Reserved.** / **版权所有 © 吴瀚庆。保留所有权利。**
+- This software is provided "as is," without warranty of any kind. Use at your own risk. / 本软件按“现状”提供，不包含任何形式的保证。使用风险由用户自行承担。
+- Unauthorized reproduction, redistribution, or use of this software or its components for commercial purposes is strictly prohibited. / 严禁未经授权的复制、再分发，或将本软件及其任何组件用于商业目的。
 
 ---
 
-## 2. System Requirements / 系统要求
+## 8. (For Developers) Local Development Setup / (开发者参考) 本地开发部署
 
-- OS: Windows 10/11 (recommended), macOS/Linux possible with proper environment / 操作系统：推荐 Windows 10/11，macOS/Linux 需保证依赖  
-- Python: 3.8–3.12 supported / Python：支持 3.8–3.12  
-- Dependencies: pandas, openpyxl, pydub, tkinter, standard libs / 依赖：pandas、openpyxl、pydub、tkinter、标准库  
-- Audio: Stereo WAV (44.1kHz/48kHz recommended) / 音频：双声道 WAV（建议 44.1kHz/48kHz）  
+**This section is only for developers who wish to modify the source code. Regular users can ignore this.**  
+**此部分仅面向希望修改源代码或进行二次开发的开发者。普通用户请忽略。**
 
----
-
-## 3. Installation / 安装部署
-
-Steps / 步骤:  
-1. Clone or download the project / 克隆或下载项目  
-2. Create virtual environment: `python -m venv .venv` & activate / 创建虚拟环境并激活  
-3. Install dependencies: `pip install -r requirements.txt` / 安装依赖  
-4. Ensure `data/`, `material/`, `output/` directories exist / 确认相关目录存在  
-5. Run `main.py` or packaged executable / 运行 `main.py` 或打包可执行文件  
-
-If using packaged EXE, Python setup is not required. / 若使用打包 EXE，无需安装 Python。
-
----
-
-## 4. Quick Start / 快速上手
-
-Workflow / 基本流程:  
-1. Edit or add flight info / 编辑或添加航班信息  
-2. Click “Save Info” to persist / 点击 “Save Info” 保存  
-3. Choose broadcast type + language set / 选择广播类型与语言  
-4. Generate or play; file appears in `output/` / 生成或播放；文件出现在 `output/`  
-
-Right-click menu allows fast play/edit/delete. / 右键菜单可快速播放/编辑/删除。  
-Default demo flights: MU2546, MU1278, CA630, CZ628 / 默认示例航班：MU2546、MU1278、CA630、CZ628。
+1.  **Prerequisites / 环境准备**:
+    - Clone the full repository: `git clone https://github.com/WuHanqing2005/Airport-Flight-Announcement-System.git`
+    - Install [Python 3.11+](https://www.python.org/)
+    - Install [FFmpeg](https://www.gyan.dev/ffmpeg/builds/) and add it to your system's PATH.
+2.  **Install Dependencies / 安装依赖**:
+    ```bash
+    # Navigate to the project directory
+    cd Airport-Flight-Announcement-System
+    # Create and activate a virtual environment
+    python -m venv .venv
+    .venv\Scripts\activate
+    # Install dependencies
+    pip install -r requirements.txt
+    ```
+3.  **Run the Application / 运行程序**:
+    ```bash
+    python src/airport_flight_announcement_system/main.py
+    ```
 
 ---
-
-## 5. Data Model & Fields / 数据模型与字段说明
-
-Stored in `data/data.xlsx`. / 存储于 `data/data.xlsx`。
-
-| Index | Field (EN) | 字段(中文) | Description / 说明 |
-| ----- | ---------- | ---------- | ------------------ |
-| 0 | Flight Number | 航班号 | e.g. CZ627 |
-| 1 | Departure | 出发地 | 起飞机场/城市 |
-| 2 | Stopover | 经停地 | 可为空 |
-| 3 | Destination | 目的地 | 终到城市 |
-| 4 | Divert | 备降机场 | 仅特殊情况 |
-| 5 | Check-in Counter | 值机柜台 | 多柜台用“-” |
-| 6 | Boarding Gate | 登机口号码 | 如 A12 |
-| 7 | Baggage Claim | 行李转盘 | 转盘号 |
-| 8 | Scheduled Arrival Time | 计划抵达时间 | 计划时间 |
-| 9 | Estimated Arrival Time | 预计抵达时间 | 更新预测 |
-| 10 | Delay Reason | 延误原因 | 语音包需匹配 |
-| 11 | Language | 语言类型 | 中英 / 中英日 / 中英韩 |
-
-Shared flights separated by space; counters use hyphen range. / 共享航班用空格分隔；柜台范围用连字符表示。
-
----
-
-## 6. GUI Overview & Operations / 界面与操作指南
-
-- Left Panel: Add Flight / Delete Flight / Play Announcement  
-  左侧：添加航班 / 删除航班 / 播放广播  
-- Right Panel: Clear / Read Info / Save Info  
-  右侧：清除 / 读取信息 / 保存信息  
-- Progress bar + error dialog feedback / 进度条 + 报错弹窗  
-- Stop All Processes button / 停止所有进程按钮  
-- Right-click (Play/Edit/Delete) / 右键（播放/编辑/删除）  
-- Login screen + Exit button / 登录界面 + 退出按钮  
-
-Tip: After editing, click “Save Info”; if gate/baggage looks wrong, click “Read Info”.  
-提示：编辑后请“Save Info”；登机口或行李转盘异常时点“Read Info”。
-
----
-
-## 7. Broadcast Types & Examples / 广播类型与示例
-
-Types / 类型:  
-1. Check-in / 值机广播  
-2. Arrival / 到达广播  
-3. Baggage Claim / 行李提取广播  
-4. Departure Delay Determined / 出发延误已定  
-5. Departure Delay Undetermined / 出发延误未定  
-6. Arrival Delay Determined / 到达延误已定  
-7. Arrival Delay Undetermined / 到达延误未定  
-
-Example (Check-in) / 示例（值机广播）:  
-- CN: 乘坐 中国南方航空公司 CZ627 次航班，从 沈阳 前往 东京 的旅客请注意。您乘坐的航班现在开始办理乘机手续，请前往 F01 至 F06 号柜台办理，谢谢！  
-- EN: May I have your attention please! We are now ready for check-in for China Southern Airlines Flight CZ627 from Shenyang to Tokyo Narita at check-in counter number F01 to F06. Thank you!  
-- JA (optional / 可选): ご案内申し上げます...（略）  
-
-Example (Arrival) / 示例（到达广播）:  
-- CN: 迎接旅客的各位请注意，从 东京 飞来的 中国南方航空公司 CZ627 次航班，已经到达本站，请您在到达大厅等候接待，谢谢！  
-- EN: May I have your attention please. China Southern Airlines Flight CZ627 with service from Tokyo Narita has arrived. Thank you!  
-
-Example (Baggage Claim) / 示例（行李提取）:  
-- CN: 乘坐 上海航空公司 FM9499 次航班，从 郑州 到达本站的旅客请注意。请前往 8 号行李转盘提取您的行李，谢谢！  
-- EN: May I have your attention please. Arriving passengers on Shanghai Airlines Flight FM9499 from Zhengzhou. Your baggage will be available at baggage claim 8. Thank you.  
-
-Templates validated; city voice pack presence auto-checked. / 模板已验证；城市语音包有自动存在性检测。
-
----
-
-## 8. File & Folder Structure / 目录与文件结构
-
-Below is the current repository layout (Poetry-managed Python project).  
-以下为当前仓库结构（使用 Poetry 进行包管理）。
-
-```
-Airport-Flight-Announcement-System/
-├── pyproject.toml                  # Poetry project config: metadata, dependencies
-│                                   # Poetry 项目配置：元数据与依赖声明
-├── poetry.lock                     # Locked exact dependency versions
-│                                   # 锁定依赖版本（保证可复现）
-├── README.md                       # Project documentation / 项目说明文档
-├── .gitignore                      # Git ignore rules / Git 忽略规则
-├── application.log                 # Application runtime log (may rotate)
-│                                   # 运行日志（可能滚动）
-├── src/                            # Source code root (per Poetry's src layout)
-│   └── airport_flight_announcement_system/   # Main package (modules here)
-│       ├── __init__.py             # Package initializer / 包初始化
-│       └── ...                     # Other Python modules / 其它核心模块
-├── data/                           # Primary flight data storage (Excel, etc.)
-│                                   # 主要航班数据（如 data.xlsx）
-├── data_copy/                      # Manual or automated backups of data/
-│                                   # data/ 目录的备份
-├── material/                       # Voice pack resources (WAV units)
-│   ├── airlines_cn/                # Airline names (CN) / 航空公司中文
-│   ├── alnum_cn/                   # Alphanumeric units (CN) / 数字字母中文
-│   ├── cityname_cn/                # City names (CN) / 城市名称中文
-│   ├── template_cn/                # Chinese sentence templates / 中文模板
-│   ├── template_en/                # English sentence templates / 英文模板
-│   ├── template_ja/                # Japanese sentence templates / 日文模板
-│   └── delay_reason_cn/            # Delay reason units (CN) / 延误原因
-├── static/                         # Static frontend assets (CSS/JS/img)
-│                                   # 前端静态资源（CSS/JS/图片）
-├── templates/                      # HTML / GUI template files
-│                                   # HTML/界面模板文件
-├── tests/                          # Automated tests (unit/integration)
-│                                   # 自动化测试（单元/集成）
-└── output/                         # Generated announcement WAV files (not committed)
-                                    # 运行时生成的广播音频目录（通常不入库）
-```
-
----
-
-## 9. Voice Pack Rules / 语音包规范
-
-- Format: WAV only / 仅支持 WAV  
-- Channels: Stereo required (auto-conversion supported) / 必须双声道（支持自动转换）  
-- Do not arbitrarily rename/remove / 禁止随意重命名或删除  
-- Contact author for new units / 新语音请联系作者合成  
-- Categories: airline / alnum / city / template / delay / 分类含：航空公司、数字字母、城市、模板、延误原因  
-
----
-
-## 10. Best Practices / 使用建议
-
-- Do not modify internal folders unless instructed / 未经指示勿改内部目录  
-- Black console may appear during synthesis (30–60s) / 合成时可能出现黑色控制台（30–60 秒）  
-- Output naming: FlightNumber-AnnouncementType.wav / 输出命名：航班号-广播类型.wav  
-- Refresh with “Read Info” if display anomaly / 显示异常用“Read Info”刷新  
-- Use standardized flight number format (e.g. MU1278) / 使用规范航班号格式（如 MU1278）  
-
----
-
-## 11. Troubleshooting & FAQ / 故障排查与常见问题
-
-| Issue / 问题 | Cause / 可能原因 | Solution / 解决方案 |
-| ------------ | ---------------- | ------------------- |
-| WinError 2 | Missing file / 文件缺失 | Check voice pack paths / 检查语音包路径 |
-| Non-stereo WAV | Source mono / 源文件单声道 | Auto-convert; re-provide HQ source / 自动转换或重新提供文件 |
-| Excel cannot save | File locked / 文件占用 | Close Excel then retry / 关闭占用后重试 |
-| City name not spoken | Missing voice unit / 语音单元缺失 | Add pack via author / 联系作者补充 |
-| Shared flight not parsed | Format error / 格式错误 | Use space separation / 用空格分隔 |
-| Counter range wrong | Hyphen misuse / 连字符误用 | Use F01-F06 format / 使用 F01-F06 |
-
----
-
-## 12. Backup & Data Safety / 备份与安全
-
-- Regularly copy `data/data.xlsx` to `data_copy/` / 定期复制 data.xlsx 到 data_copy/  
-- Version control for `output/` if auditing required / 可对 output/ 做版本管理  
-- Preserve error logs for diagnostics / 保存错误日志用于诊断  
-
----
-
-## 13. Roadmap / 开发路线图
-
-- More multilingual packs / 扩展多语言包  
-- Custom template editor / 模板编辑器  
-- Batch generation & scheduling / 批量与定时广播  
-- Richer metadata (aircraft, stand, changes) / 更多元数据（机型、机位、变更）  
-- Automatic updater / 自动更新机制  
-
----
-
-## 14. Contributing / 贡献方式
-
-- Contact author for feature requests / 功能需求请联系作者  
-- Discuss before submitting patches / 修改前需沟通  
-- Provide reproducible steps & logs / 提供复现步骤与日志  
-
----
-
-## 15. License & Disclaimer / 许可与声明
-
-- All rights reserved / 版权所有  
-- No unauthorized redistribution / 禁止未授权传播  
-- Infringement pursued legally / 侵权必究  
-- Provided “as is”; use at own risk / 按“现状”提供；风险自负  
-
----
-
-## 16. Update Log / 更新日志
-
-### 2024.04.02
-`Project initiated; switched from Google TTS to WAV stitching; first tkinter GUI`
-`项目启动；由谷歌 TTS 改为 WAV 拼接；首版 tkinter GUI`
-
-### 2024.04.04
-`Bug fixes`
-`修复若干问题`
-
-### 2024.04.05
-`Counter range logic improved; visual error dialogs added`
-`值机柜台范围逻辑改进；新增可视化报错`
-
-### 2024.04.06
-`English check-in opening sentences; input validation; voice refinement via reecho.ai`
-`英文句型前两句；输入校验；使用 reecho.ai 优化语音`
-### 2024.04.07
-`Completed English templates; city pack existence check; Japanese check-in templates`
-`完善英文模板；检测城市语音包；新增日语值机句型`
-
-### 2024.04.08
-`Added Boarding Gate & Baggage Claim; manual city input; Shanghai district packs (CN/EN/JA)`
-`新增登机口与行李转盘；手动城市输入；上海各区中英日语音库`
-
-### 2024.04.10
-`Logic & comments improved; example flights updated`
-`优化逻辑与注释；更新示例航班`
-
-### 2024.04.11
-`Removed unused code; generate text transcript with audio`
-`删除无用代码；生成文本与音频`
-
-### 2024.04.17
-`Framework for broadcast type selection`
-`广播类型选择框架`
-
-### 2024.04.26
-`Added language combinations (CN-EN / CN-EN-JA / CN-EN-KO); stronger checks; path & naming adjusted; added MU1278`
-`增加语言组合；增强检查；修改输出路径与命名；新增 MU1278`
-
-### 2024.04.27
-`Migrated to Visual Studio; persistent Excel storage`
-`迁移至 Visual Studio；Excel 持久化`
-
-### 2024.04.28
-`Added try…except per function; improved error hints; portable paths; “Stop All Processes” button`
-`函数加 try…except；优化报错；路径跨平台；新增“停止所有进程”`
-
-### 2024.04.29
-`Login UI beautified; arrival with stopover improved; error logs; progress bar`
-`美化登录；完善经停到达；错误日志；进度条`
-
-### 2024.04.30
-`Shared flights supported (space-separated); English arrival added`
-`支持共享航班；补全到达英文部分`
-
-### 2024.05.01
-`Switched interface to English; voice file renaming to EN`
-`界面改为英文；语音文件英文化`
-
-### 2024.05.02
-`Python interpreter compatibility adjustments`
-`调整解释器兼容性`
-
-### 2024.05.05
-`Fixed WinError 2; all packs stereo; improved `refresh_table()` `
-`修复 WinError2；全部语音包双声道；完善 `refresh_table()` `
-
-### 2024.05.06
-`Auto stereo conversion feature`
-`自动双声道转换功能`
-
-### 2024.05.20
-`Added more voice resources`
-`新增语音资源`
-
-### 2024.06.14
-`Added Exit on login; UI improved`
-`登录界面新增退出；界面美化`
-
-### 2024.10.27
-`Fixed saving; re-synthesized some packs with GPT-SoVITS`
-`修复保存问题；用 GPT-SoVITS 重合成部分语音`
-
-### 2024.11.11
-`Added Divert / Scheduled / Estimated / Delay Reason fields; 12-column UI; debugging state`
-`新增备降/计划/预计/延误原因字段；界面 12 列；调试中`
-
-### 2025.10.01
-`Added right-click context menu; Save Info success toast`
-`新增右键菜单；保存成功提示`
-
-### 2025.11.11
-`Converted project to a hybrid Python + Web architecture (desktop logic + browser UI); adopted Poetry for dependency & environment management; reorganized code into src/ package layout; integrated templates/static for web front-end; updated README (file structure + install section) for Poetry workflow; prepared groundwork for future test suite.`
-`项目升级为 Python + Web 混合架构（桌面逻辑 + 浏览器界面）；采用 Poetry 管理依赖与环境；重构代码为 src/ 包布局；整合 templates/static 目录用于 Web 前端；更新 README（目录结构与安装部分）以适配 Poetry 工作流；为后续测试框架预留结构。`
-
-
----
-
-## 17. Appendix: Data Entry Tips / 附录：数据录入技巧
-
-- Flight Number: Uppercase letters + digits (e.g. CZ627) / 航班号：大写字母+数字（如 CZ627）  
-- Counters: Use range F01-F06 or list segments / 柜台：使用范围如 F01-F06  
-- Shared Flights: Separate by spaces (CZ627 KL1234) / 共享航班：用空格分隔（如 CZ627 KL1234）  
-- Delay Reason: Use standardized vocabulary / 延误原因：使用标准词汇（与语音包一致）  
-- Language: Select supported combination (CN-EN / CN-EN-JA / CN-EN-KO) / 语言类型：按需选择支持组合  
-
----
-
-Thank you for using Airport Flight Announcement System! / 感谢使用航班广播语音系统！
+Thank you for using the Airport Flight Announcement System! 
+感谢您使用航班广播语音系统！
